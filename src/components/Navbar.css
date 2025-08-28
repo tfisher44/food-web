@@ -1,0 +1,109 @@
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 80px;
+    background-color: #12451d;
+    color: white;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+ul {
+  display: flex;
+  padding: 5;
+  margin: 0;
+}
+
+/* need to left-justify the logo */
+
+/* the css below was copied from vanilla js site and needs to be updated */
+
+.navbar li a {
+    width: 100%;
+    position: relative;
+    text-decoration: none;
+    color: white;
+    /* padding-left: 25px;
+    padding-right: 25px; */
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: block;
+}
+
+.navbar-links li a::after {
+    content: '🌻';
+    position: absolute;
+    bottom: -3px;
+    left: 114%;
+    transform: translateX(-50%) scale(0);
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.navbar-links li a::before {
+    content: '🌱';
+    position: absolute;
+    bottom: -10px;
+    Right: 93%;
+    transform: translateX(-50%) scale(0);
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.navbar-links li a:hover::after {
+    transform: translateX(-50%) scale(1.5);
+    transition-delay: 0.2s;
+}
+
+
+.navbar-links li a:hover::before {
+    transform: translateX(-50%) scale(1.0);
+    transition-delay: 1s;
+}
+
+/* Navigation Hover Effect */
+.navbar-links li a:hover {
+    background-color: #d2e8c9;
+    color: #12451d;
+}
+
+.navbar-header {
+    display: none;
+    /* Hidden on desktop */
+}
+
+.navbar-toggle {
+    display: none;
+    /* Hidden on desktop */
+    cursor: pointer;
+    padding: 10px;
+}
+
+.navbar-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+
