@@ -1,7 +1,12 @@
+import HeroSection from "../components/HeroSection"
+
 function MapPage(){
     return (
         <>
-            <p>Map Page Content</p>
+            <HeroSection title="Explore Your Local Food System" image="/assets/pictures/MapPageImage.webp"/>
+            <main>
+                <p>Map Here</p>
+            </main>
         </>
     );
 }

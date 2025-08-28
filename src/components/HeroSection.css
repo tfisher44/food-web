@@ -1,0 +1,29 @@
+.hero-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 33vh;
+  width: 100vw;
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-overlay {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 350px;
+  height: 130px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 35px;
+  color: #12451d;
+  text-align: center;
+}

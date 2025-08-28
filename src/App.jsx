@@ -15,8 +15,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/map-page" element={<MapPage />} />
           <Route path="/calendar-page" element={<CalendarPage />} />
-          <Route path="/projects-page" element={<EducatePage />} />
-          <Route path="/educate-page" element={<ProjectsPage />} />
+          <Route path="/projects-page" element={<ProjectsPage />} />
+          <Route path="/educate-page" element={<EducatePage />} />
         </Routes>
       </AppLayout>
     </BrowserRouter>
