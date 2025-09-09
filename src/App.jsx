@@ -9,7 +9,6 @@ import ProjectsPage from "./pages/ProjectsPage"
 function App() {
 
   return (
-    <BrowserRouter>
       <AppLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -19,8 +18,9 @@ function App() {
           <Route path="/educate-page" element={<EducatePage />} />
         </Routes>
       </AppLayout>
-    </BrowserRouter>
   )
 }
 
 export default App
+
+
