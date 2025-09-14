@@ -6,7 +6,6 @@ nav {
     padding: 1px 80px;
     background-color: #12451d;
     color: white;
-    width: 100vw;
     position: fixed;
     top: 0;
     left: 0;
@@ -23,7 +22,7 @@ nav {
 
 .navbar li {
     list-style: none;
-    padding: 0 20px;
+    padding: 0 25px;
     position: relative;
 }
 

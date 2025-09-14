@@ -2,7 +2,6 @@
 import HeroSection from "../components/HeroSection"
 import MapComponent from "../components/map_components/MapComponent";
 
-
 function MapPage(){
 
     return (
@@ -12,10 +11,10 @@ function MapPage(){
                 image="/assets/pictures/MapPageImage.webp"
             />
 
-            <div className="map-content" style={{ position: "relative", width: "100%", height: "100vh" }}>
+            <div className="map-container" style={{ position: "relative", width: "100%", height: "100vh" }}>
                 <MapComponent />
 
-                {/* overlayed components (set position: "absolute") */}
+                {/* put the produce edit form here when ready */}
             </div>
         </>
     );

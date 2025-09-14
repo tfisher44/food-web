@@ -4,7 +4,7 @@ import "./Navbar.css"
 function Navbar(){
     return (
         <nav className="navbar">
-            <h3 className="food-web-logo">Put Logo Here</h3>
+            {/* <h3 className="food-web-logo">Put Logo Here</h3> */}
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/map-page">Map</Link></li>
