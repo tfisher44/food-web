@@ -1,7 +1,7 @@
 function ProjectsPage(){
     return (
         <>
-            <p>Projects Page Content</p>
+            <p>Coming Soon!</p>
         </>
     );
 }

@@ -1,7 +1,7 @@
 function CalendarPage(){
     return (
         <>
-            <p>Calendar Page Content</p>
+            <p>Coming Soon!</p>
         </>
     );
 }
