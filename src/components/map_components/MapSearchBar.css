@@ -56,15 +56,15 @@
 /* Custom wrapper classes for different positions of the search bar on the map*/
 .search-bar-site-name-wrapper {
     position: absolute;
-    top: 10px;
-    left: 30%;
+    top: 275px;
+    left: 15px;
     z-index: 10;
 }
 
 .search-bar-produce-wrapper {
     position: absolute;
-    top: 10px;
-    right: 30%;
+    top: 320px;
+    left: 15px;
     z-index: 10;
 }
 

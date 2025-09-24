@@ -111,14 +111,93 @@ export function initializeMapLayers(viewElement, layers) {
 //  ------------------------------------------------
 // Search and Filter Functions: 
 
-// TODO: implement functions
-
 // site name search function
-export function searchBySiteName(searchTerm, layers) {
+export function searchBySiteName(searchTerm, layers, view) {
     const query = searchTerm.toLowerCase();
+
+    const allSites = [
+    ...layers.gardensLayer.current.graphics,
+    ...layers.farmsLayer.current.graphics,
+    ...layers.farmersMarketsLayer.current.graphics,
+    ...layers.foodBanksLayer.current.graphics,
+    ...layers.compostLayer.current.graphics
+]
+
+    const result = allSites.filter(site => {
+        const name = site.attributes.Name?.toLowerCase();
+        return name.includes(query);
+    });
+
+    if (result.length > 0) {
+        const match = result[0];
+        view.goTo({
+            target: match.geometry,
+            zoom: 16
+        })
+    } else {
+        alert("No sites found");
+        console.log("search results not found");
+    }
+}
+
+export function clearSiteNameResults(view){
+    //recenter the map
+    view.goTo({
+        center: [-112.000000, 33.080000],
+        zoom: 8
+    })
 }
 
 // produce search / filter function
 export function searchByProduce(searchTerm, layers) {
     const query = searchTerm.toLowerCase();
+
+    if (searchTerm.trim() !== "") {
+        const gardens = layers.gardensLayer.current.graphics;
+        const farms = layers.farmsLayer.current.graphics;
+
+        const matchingGardens = gardens.filter(site => {
+            const produce = site.attributes.Produce?.toLowerCase() || '';
+            return produce.includes(searchTerm);
+        });
+
+        const matchingFarms = farms.filter(site => {
+            const produce = site.attributes.Produce?.toLowerCase() || '';
+            return produce.includes(searchTerm);
+        });
+
+        if (matchingGardens.length > 0 || matchingFarms.length > 0) {
+            // Hide other layers
+            layers.farmersMarketsLayer.current.visible = false;
+            layers.foodBanksLayer.current.visible = false;
+            layers.compostLayer.current.visible = false;
+
+            // remove all graphics from gardens and farms layers
+            layers.gardensLayer.current.removeAll();
+            layers.farmsLayer.current.removeAll();
+
+            // add only the farms and gardens that have matching produce
+            layers.gardensLayer.current.addMany(matchingGardens);
+            layers.farmsLayer.current.addMany(matchingFarms);
+        }
+        else {
+            alert("No matching produce found.");
+        }
+
+    } else {
+        alert("Produce search input is empty.");
+    }
+}
+
+export async function clearProduceResults(layers) {
+    // Reset layer visibility
+    layers.farmersMarketsLayer.current.visible = true;
+    layers.foodBanksLayer.current.visible = true;
+    layers.compostLayer.current.visible = true;
+
+    // repopulate the farms and gardens layers:
+    await Promise.all([
+        populateLayer(SITE_LAYERS.GARDENS.tableName, SITE_LAYERS.GARDENS.icon, layers.gardensLayer.current),
+        populateLayer(SITE_LAYERS.FARMS.tableName, SITE_LAYERS.FARMS.icon, layers.farmsLayer.current)
+    ]);
 }

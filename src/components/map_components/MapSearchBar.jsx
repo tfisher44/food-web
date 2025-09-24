@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./MapSearchBar.css";
 
-function MapSearchBar({placeholder, onSearch, submitBtnIcon}) {
+function MapSearchBar({placeholder, onSearch, submitBtnIcon, clearFunction}) {
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleSubmit = (e) => {
@@ -11,6 +11,7 @@ function MapSearchBar({placeholder, onSearch, submitBtnIcon}) {
 
     const handleClear = () => {
         setSearchTerm("");
+        clearFunction();
     };
 
     return (

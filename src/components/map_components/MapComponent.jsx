@@ -10,10 +10,10 @@ import esriConfig from "@arcgis/core/config";
 import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
 
 // imports from react
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 //import custom components and helper functions
-import { populateAllLayers, initializeMapLayers } from "./map_functions";
+import { populateAllLayers, initializeMapLayers, searchBySiteName, searchByProduce, clearSiteNameResults, clearProduceResults } from "./map_functions";
 import MapSearchBar from "./MapSearchBar";
 
 function MapComponent(){
@@ -37,6 +37,8 @@ function MapComponent(){
         new GraphicsLayer({title: "Compost Collection Sites", id: "compostSitesLayer"})
     );
 
+    const [mapView, setMapView] = useState(null); // mapView to pass to the search by name function
+
     // object with all layer refs
     const allLayers = {
         gardensLayer,
@@ -55,6 +57,7 @@ function MapComponent(){
     const handleViewReady = (event) => {
         const viewElement = event.target;
         initializeMapLayers(viewElement, allLayers);
+        setMapView(viewElement);
     }
 
     return (
@@ -73,22 +76,23 @@ function MapComponent(){
                 <arcgis-layer-list position="top-left" />
             </arcgis-map>
             
-            {/* TODO: uncomment below when search functions are finished */}
-            {/* <div className="search-bar-site-name-wrapper">
-                    <MapSearchBar 
-                        placeholder="Search by Site Name"
-                        onSearch={(term => searchBySiteName(term, allLayers))}
-                        submitBtnIcon={"/assets/icons/search-location-icon.png"}
-                    />
+            <div className="search-bar-site-name-wrapper">
+                <MapSearchBar 
+                    placeholder="Search by Site Name"
+                    onSearch={(searchTerm => searchBySiteName(searchTerm, allLayers, mapView))}
+                    submitBtnIcon={"/assets/icons/search-location-icon.png"}
+                    clearFunction={() => clearSiteNameResults(mapView)}
+                />
             </div>
 
             <div className="search-bar-produce-wrapper">
                 <MapSearchBar 
                     placeholder="Search for Produce"
-                    onSearch={(term => searchByProduce(term, allLayers))}
+                    onSearch={(searchTerm => searchByProduce(searchTerm, allLayers))}
                     submitBtnIcon={"/assets/icons/apple-search.png"}
+                    clearFunction={() => clearProduceResults(allLayers)}
                 />
-            </div> */}
+            </div>
         </div>
     );
 }
