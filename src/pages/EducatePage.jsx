@@ -1,7 +1,7 @@
 function EducatePage(){
     return (
         <>
-            <p>Educate Page Content</p>
+            <p>Coming Soon!</p>
         </>
     );
 }

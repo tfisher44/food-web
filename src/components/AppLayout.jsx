@@ -9,7 +9,7 @@ function AppLayout({ children }){
 
             <main>{children}</main>
 
-            <footer>Food Web Footer</footer>
+            {/* <footer>Food Web Footer</footer> */}
         </>
     );
 }

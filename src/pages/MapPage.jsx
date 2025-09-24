@@ -11,10 +11,8 @@ function MapPage(){
                 image="/assets/pictures/MapPageImage.webp"
             />
 
-            <div className="map-container" style={{ position: "relative", width: "100%", height: "100vh" }}>
+            <div className="map-container" style={{ position: "relative", width: "100%", height: "61vh" }}>
                 <MapComponent />
-
-                {/* put the produce edit form here when ready */}
             </div>
         </>
     );

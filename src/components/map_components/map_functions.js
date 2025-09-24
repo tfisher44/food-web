@@ -121,7 +121,7 @@ export function searchBySiteName(searchTerm, layers, view) {
     ...layers.farmersMarketsLayer.current.graphics,
     ...layers.foodBanksLayer.current.graphics,
     ...layers.compostLayer.current.graphics
-]
+    ]
 
     const result = allSites.filter(site => {
         const name = site.attributes.Name?.toLowerCase();
@@ -143,7 +143,7 @@ export function searchBySiteName(searchTerm, layers, view) {
 export function clearSiteNameResults(view){
     //recenter the map
     view.goTo({
-        center: [-112.000000, 33.080000],
+        center: [-112.000000, 33.380000],
         zoom: 8
     })
 }
