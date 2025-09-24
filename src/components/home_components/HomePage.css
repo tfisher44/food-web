@@ -1,0 +1,81 @@
+/* Global Reset and Base Styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #d2e8c9;
+    /* Light green background */
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    justify-content: center;
+    /* Creates space between mission and buttons */
+    padding-left: 75px;
+    padding-right: 75px;
+    background-color: #d2e8c9;
+    z-index: 2;
+}
+
+/* Mission Section Styles */
+.mission-section {
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    color: #12451d;
+    font-family: 'Calcite', Avenir Next;
+    line-height: normal;
+}
+
+.mission-title {
+    font-size: 36px;
+    color: #12451d;
+}
+
+.mission-description {
+    font-size: 24px;
+    margin-bottom: 0px;
+    color: #2c4a34;
+    max-width: 850px;
+}
+
+/* Priority List Styles */
+
+.priorities-title {
+    font-size: 36px;
+    margin-bottom: 0px;
+    color: #12451d;
+}
+
+.priorities-list {
+    font-size: 19px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* list-style-type: disc; */
+    padding-left: 0;
+    flex-direction: column;
+}
+
+.priorities-list li {
+    margin-bottom: 12px;
+    color: #2c4a34;
+}
+
+/* Action Buttons Layout */
+.buttons-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 420px;
+    /* Control maximum width of buttons*/
+    margin: auto;
+    padding-top: 0%;
+    padding-bottom: 8%;
+    padding-left: 20px;
+}
