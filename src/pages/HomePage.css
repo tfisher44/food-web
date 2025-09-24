@@ -1,13 +1,6 @@
 /* Global Reset and Base Styles */
-* {
+.homepage * {
     box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #d2e8c9;
-    /* Light green background */
 }
 
 /* Main Content Layout */

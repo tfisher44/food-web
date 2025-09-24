@@ -1,11 +1,10 @@
 // import components
 import HeroSection from "../components/HeroSection"
-import '../components/home_components/HomePage.css';
+import './HomePage.css';
 
 function HomePage(){
     return (
         <>
-
             <HeroSection 
                title="Food Web"
                image="/assets/pictures/HomePageImage.webp"
