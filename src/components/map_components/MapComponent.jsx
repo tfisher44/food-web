@@ -29,8 +29,21 @@ function MapComponent(){
         setMapView(mapView)
     }
 
+    // populate the layers, add them to the map, and store them in state when mapView is ready
+    useEffect(() => {
+        async function loadMap() {
+            const layers = await populateAllLayers();
+            setLayers(layers);
+
+            if (mapView && layers) {
+                addLayersToMap(mapView, layers);
+            }
+        }
+        loadMap();
+    }, [mapView]);
+
     // define the sources and search criteria for the arcgis-search component
-    async function configureSearch() {
+    async function configureArcGISSearch() {
         const search = document.querySelector("arcgis-search");
         await search.componentOnReady();
         search.sources = [
@@ -48,24 +61,24 @@ function MapComponent(){
         ];
     }
 
-    // call loadMap when mapView is ready
-    useEffect(() => {
-        // populate the layers, add them to the map, and store them in state
-        async function loadMap() {
-            const layers = await populateAllLayers();
-            setLayers(layers);
-
-            if (mapView && layers) {
-                addLayersToMap(mapView, layers);
+    // add legend to the arcgis-layer-list component
+    async function addLegendToLayerList() {
+        document.querySelector("arcgis-layer-list").listItemCreatedFunction = (event) => {
+            const { item } = event;
+            if (item.layer.type != "group") {
+                item.panel = {
+                    content: "legend",
+                    open: false,
+                };
             }
-        }
-        loadMap();
-    }, [mapView]);
+        };
+    }
 
-    // call configureSearch when layers are ready
+    // call arcgis component functions when layers are ready
     useEffect(() => {
         if (layers) {
-            configureSearch();
+            configureArcGISSearch();
+            addLegendToLayerList();
         }
     }, [layers]);
 
@@ -87,7 +100,6 @@ function MapComponent(){
                 <arcgis-zoom position="top-right" />
                 <arcgis-home position="top-right" />
                 <arcgis-layer-list position="bottom-left" />
-                <arcgis-legend position="bottom-right" />
 
                 <div className="search-bar-produce-wrapper">
                     <MapSearchBar 
