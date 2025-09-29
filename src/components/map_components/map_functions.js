@@ -1,45 +1,36 @@
 import Graphic from "@arcgis/core/Graphic.js";
+import FeatureLayer from "@arcgis/core/layers/FeatureLayer.js";
 import { supabase } from "../../supabaseClient";
 
 // Functions to populate the map:
 
-function createGraphic(site, icon) {
+// create graphic
+function createGraphic(site){
+    const point = {
+        type: "point",
+        longitude: site.Longitude,
+        latitude: site.Latitude
+    }
+
+    const siteAttributes = {
+        ObjectID: site.Site_ID,
+        Name: site.Name,
+        Address: site.Address,
+        Website: site.Website,
+        Hours: site.Hours,
+        Contact: site.Contact,
+        Description: site.Description,
+        Produce: site.Produce    
+    }
+
     return new Graphic({
-        geometry: {
-            type: "point",
-            longitude: site.Longitude,
-            latitude: site.Latitude
-        },
-        symbol: {
-            "type": "picture-marker",
-            "url": icon,
-            "width": "30px",
-            "height": "30px"
-        },
-        attributes: {
-            Name: site.Name,
-            Address: site.Address,
-            Website: site.Website,
-            Hours: site.Hours,
-            Contact: site.Contact,
-            Description: site.Description,
-            Produce: site.Produce    
-        },
-        popupTemplate: {
-            title: "{Name}",
-            content: `
-            <b>Address:</b> {Address}<br><br>
-            <a href={Website} target=_blank><b>Visit Website</b></a><br><br>
-            <b>Volunteer Hours:</b> {Hours}<br><br>
-            <b>Contact:</b> {Contact}<br><br>
-            <b>Description:</b> {Description}<br><br>
-            <b>Available Produce:</b><br> {Produce}
-            `
-        }
-    });
+        geometry: point,
+        attributes: siteAttributes
+    })
 }
 
-async function populateLayer(tableName, icon, layer) {
+// populate layer
+async function populateLayer(tableName, icon) {
     try {
         // fetch the data from Supabase
         const { data, error } = await supabase.from(tableName).select('*');
@@ -49,19 +40,52 @@ async function populateLayer(tableName, icon, layer) {
             return;
         }
 
-        // create a graphic for each of the sites from the table
-        data.forEach(site => {
-            const graphic = createGraphic(site, icon);
-            layer.add(graphic); // add the graphic to the layer
-        });
+        // create an array of graphics using the array of site data from Supabase
+        const graphics = data.map((site) => createGraphic(site));
 
+        // create the feature layer
+        return new FeatureLayer({
+            title: tableName,
+            fields: [
+                {name: "ObjectID", type: "oid"},
+                {name: "Name", type: "string"},
+                {name: "Address", type: "string"},
+                {name: "Website", type: "string"},
+                {name: "Hours", type: "string"},
+                {name: "Contact", type: "string"},
+                {name: "Description", type: "string"},
+                {name: "Produce", type: "string"}
+            ],
+            source: graphics,
+            renderer: {
+                type: "simple",
+                symbol: {
+                    type: "picture-marker",
+                    url: icon,
+                    width: "30px",
+                    height: "30px"
+                }
+            },
+            popupTemplate: {
+                title: "{Name}",
+                content: `
+                    <b>Address:</b> {Address}<br><br>
+                    <a href={Website} target=_blank><b>Visit Website</b></a><br><br>
+                    <b>Volunteer Hours:</b> {Hours}<br><br>
+                    <b>Contact:</b> {Contact}<br><br>
+                    <b>Description:</b> {Description}<br><br>
+                    <b>Available Produce:</b><br> {Produce}
+                    `
+            }
+        })
+        
     } catch (e) {
-        console.error('Unexpected error in populate_layer', e);
+        console.error("Error populating layer", e);
     }
 }
 
-// object to define the Supabase table names and icon paths for each layer
-export const SITE_LAYERS = {
+// define the table name and marker icon for each layer
+const SITE_LAYERS = {
     GARDENS: {
         tableName: "Community Gardens",
         icon: "/assets/icons/lettuce.png"
@@ -84,105 +108,56 @@ export const SITE_LAYERS = {
     }
 };
 
-export async function populateAllLayers(layers) {
+// populate all layers
+export async function populateAllLayers() {
     try {
-        // run the populate_layer functions in parallel
-        await Promise.all([
-            populateLayer(SITE_LAYERS.GARDENS.tableName, SITE_LAYERS.GARDENS.icon, layers.gardensLayer.current),
-            populateLayer(SITE_LAYERS.FARMS.tableName, SITE_LAYERS.FARMS.icon, layers.farmsLayer.current),
-            populateLayer(SITE_LAYERS.FARMERS_MARKETS.tableName, SITE_LAYERS.FARMERS_MARKETS.icon, layers.farmersMarketsLayer.current),
-            populateLayer(SITE_LAYERS.FOOD_BANKS.tableName, SITE_LAYERS.FOOD_BANKS.icon, layers.foodBanksLayer.current),
-            populateLayer(SITE_LAYERS.COMPOST_SITES.tableName, SITE_LAYERS.COMPOST_SITES.icon, layers.compostLayer.current),
+        const [gardens, farms, farmersMarkets, foodBanks, compostSites] = await Promise.all([
+            populateLayer(SITE_LAYERS.GARDENS.tableName, SITE_LAYERS.GARDENS.icon),
+            populateLayer(SITE_LAYERS.FARMS.tableName, SITE_LAYERS.FARMS.icon),
+            populateLayer(SITE_LAYERS.FARMERS_MARKETS.tableName, SITE_LAYERS.FARMERS_MARKETS.icon),
+            populateLayer(SITE_LAYERS.FOOD_BANKS.tableName, SITE_LAYERS.FOOD_BANKS.icon),
+            populateLayer(SITE_LAYERS.COMPOST_SITES.tableName, SITE_LAYERS.COMPOST_SITES.icon),
         ]);
-    } catch (err) {
-        console.error('Error populating layers:', err);
+
+        const layers = {
+            gardensLayer: gardens,
+            farmsLayer: farms,
+            farmersMarketsLayer: farmersMarkets,
+            foodBanksLayer: foodBanks,
+            compostLayer: compostSites
+        };
+
+        return layers;
+
+    } catch (e) {
+        console.error("Error in populateAllLayers", e);
     }
+
+    return null;
 }
 
-// add each useRef layer to the map
-export function initializeMapLayers(viewElement, layers) {
-    viewElement.map.add(layers.foodBanksLayer.current);
-    viewElement.map.add(layers.farmersMarketsLayer.current);
-    viewElement.map.add(layers.compostLayer.current);
-    viewElement.map.add(layers.farmsLayer.current);
-    viewElement.map.add(layers.gardensLayer.current);
+// add layers to the map view
+export function addLayersToMap(mapView, layers) {
+    mapView.map.add(layers.compostLayer);
+    mapView.map.add(layers.foodBanksLayer);
+    mapView.map.add(layers.farmersMarketsLayer);
+    mapView.map.add(layers.farmsLayer);
+    mapView.map.add(layers.gardensLayer);
 }
 
-//  ------------------------------------------------
-// Search and Filter Functions: 
-
-// site name search function
-export function searchBySiteName(searchTerm, layers, view) {
-    const query = searchTerm.toLowerCase();
-
-    const allSites = [
-    ...layers.gardensLayer.current.graphics,
-    ...layers.farmsLayer.current.graphics,
-    ...layers.farmersMarketsLayer.current.graphics,
-    ...layers.foodBanksLayer.current.graphics,
-    ...layers.compostLayer.current.graphics
-    ]
-
-    const result = allSites.filter(site => {
-        const name = site.attributes.Name?.toLowerCase();
-        return name.includes(query);
-    });
-
-    if (result.length > 0) {
-        const match = result[0];
-        view.goTo({
-            target: match.geometry,
-            zoom: 16
-        })
-    } else {
-        alert("No sites found");
-        console.log("search results not found");
-    }
-}
-
-export function clearSiteNameResults(view){
-    //recenter the map
-    view.goTo({
-        center: [-112.000000, 33.380000],
-        zoom: 8
-    })
-}
-
-// produce search / filter function
+// function to filter the gardensLayer and farmsLayer by produce
 export function searchByProduce(searchTerm, layers) {
-    const query = searchTerm.toLowerCase();
+    const produce = searchTerm.toLowerCase();
 
-    if (searchTerm.trim() !== "") {
-        const gardens = layers.gardensLayer.current.graphics;
-        const farms = layers.farmsLayer.current.graphics;
+    if (produce.trim() !== "") {
+        
+        layers.gardensLayer.definitionExpression = `LOWER(Produce) LIKE '%${produce}%'`;
+        layers.farmsLayer.definitionExpression = `LOWER(Produce) LIKE '%${produce}%'`;
 
-        const matchingGardens = gardens.filter(site => {
-            const produce = site.attributes.Produce?.toLowerCase() || '';
-            return produce.includes(searchTerm);
-        });
-
-        const matchingFarms = farms.filter(site => {
-            const produce = site.attributes.Produce?.toLowerCase() || '';
-            return produce.includes(searchTerm);
-        });
-
-        if (matchingGardens.length > 0 || matchingFarms.length > 0) {
-            // Hide other layers
-            layers.farmersMarketsLayer.current.visible = false;
-            layers.foodBanksLayer.current.visible = false;
-            layers.compostLayer.current.visible = false;
-
-            // remove all graphics from gardens and farms layers
-            layers.gardensLayer.current.removeAll();
-            layers.farmsLayer.current.removeAll();
-
-            // add only the farms and gardens that have matching produce
-            layers.gardensLayer.current.addMany(matchingGardens);
-            layers.farmsLayer.current.addMany(matchingFarms);
-        }
-        else {
-            alert("No matching produce found.");
-        }
+        // hide the other layers
+        layers.farmersMarketsLayer.visible = false;
+        layers.foodBanksLayer.visible = false;
+        layers.compostLayer.visible = false;
 
     } else {
         alert("Produce search input is empty.");
@@ -190,14 +165,10 @@ export function searchByProduce(searchTerm, layers) {
 }
 
 export async function clearProduceResults(layers) {
-    // Reset layer visibility
-    layers.farmersMarketsLayer.current.visible = true;
-    layers.foodBanksLayer.current.visible = true;
-    layers.compostLayer.current.visible = true;
-
-    // repopulate the farms and gardens layers:
-    await Promise.all([
-        populateLayer(SITE_LAYERS.GARDENS.tableName, SITE_LAYERS.GARDENS.icon, layers.gardensLayer.current),
-        populateLayer(SITE_LAYERS.FARMS.tableName, SITE_LAYERS.FARMS.icon, layers.farmsLayer.current)
-    ]);
+    // reset layer visibility
+    layers.gardensLayer.definitionExpression = null;
+    layers.farmsLayer.definitionExpression = null;
+    layers.farmersMarketsLayer.visible = true;
+    layers.foodBanksLayer.visible = true;
+    layers.compostLayer.visible = true;
 }

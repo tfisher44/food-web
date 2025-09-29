@@ -1,17 +1,17 @@
 .search-form {
     position: relative;
-    width: 230px;
-    height: 13px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    width: 220px;
+    height: 12px;
+    box-shadow: 1 2px 6px rgba(0, 0, 0, 0.3);
     border-radius: 15px;
 }
 
 .map-search-bar {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #e4f3e0;
     padding: 10px 0px 10px 8px;
     font-size: 14px;
-    border: 1px solid #12451d;
-    border-radius: 15px;
+    border: 1px solid #020e04;
+    border-radius: 4px;
     z-index: 10;
     width: 100%;
     height: 100%;
@@ -64,7 +64,7 @@
 
 .search-bar-produce-wrapper {
     position: absolute;
-    top: 58px;
-    left: 57px;
+    top: 14px;
+    left: 265px;
     z-index: 10;
 }
