@@ -38,7 +38,7 @@ body {
 
 .mission-description {
     font-size: 24px;
-    margin-bottom: 0px;
+    margin-bottom: 30px;
     color: #2c4a34;
     max-width: 850px;
 }
@@ -47,6 +47,7 @@ body {
 
 .priorities-title {
     font-size: 36px;
+    margin-top: 0px;
     margin-bottom: 0px;
     color: #12451d;
 }
@@ -56,8 +57,9 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    /* list-style-type: disc; */
+    list-style-type: none;
     padding-left: 0;
+    margin-top: 20px;
     flex-direction: column;
 }
 
@@ -78,4 +80,47 @@ body {
     padding-top: 0%;
     padding-bottom: 8%;
     padding-left: 20px;
+}
+
+/* Individual Button Styling */
+.styled-button {
+    display: flex;
+    align-items: center;
+    /* Center icon with text horizontally */
+    background-color: rgba(255, 255, 255, 0.56);
+    padding: 15px 15px 15px 25px;
+    border-radius: 5px;
+    color: #12451d;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.slack-button {
+    display: flex;
+    align-items: center;
+    color: #12451d;
+    background-color: rgba(255, 254, 225, 0.56);
+    padding: 15px 15px 15px 25px;
+    border-radius: 5px;
+}
+
+.button-icon {
+    width: 24px;
+    height: 24px;
+    margin: 0 15px 0 5px;
+    /* Space between icon and text */
+}
+
+/* Button Hover Effects */
+.styled-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Slightly more opaque on hover */
+}
+
+.slack-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(2255, 254, 225, 0.884);
+    /* Slightly more opaque on hover */
 }

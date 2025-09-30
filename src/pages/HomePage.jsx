@@ -35,22 +35,22 @@ function HomePage(){
                 {/* Buttons Section */}
     <div class="buttons-section">
       <a href="../MapPage.jsx" class="styled-button">
-        <img src="assets/location-icon.svg" alt="Location icon" class="button-icon"></img>
+        <img src="assets\icons\Home_Page_Icons\location-icon.svg" alt="Location icon" class="button-icon"></img>
         <span>Explore Your Local Food System</span>
       </a>
 
       <a href="./Connect-Page/connect.html" class="styled-button">
-        <img src="assets/tools-icon.svg" alt="Tools icon" class="button-icon"></img>
+        <img src="assets\icons\Home_Page_Icons\tools-icon.svg" alt="Tools icon" class="button-icon"></img>
         <span>Attend Events & Workshops</span>
       </a>
 
       <a href="./Educate-Page/educate.html" class="styled-button">
-        <img src="assets/produce-icon.svg" alt="Education icon" class="button-icon"></img>
+        <img src="assets\icons\Home_Page_Icons\produce-icon.svg" alt="Education icon" class="button-icon"></img>
         <span>Learn About Sustainable Gardening</span>
       </a>
       <a href="https://join.slack.com/t/food-web/shared_invite/zt-30ngo8ktg-AedgakrlhhP~nrNAZXPChw"
         class="slack-button">
-        <img src="assets/slack-new-logo.svg" alt="Slack icon" class="button-icon"></img>
+        <img src="assets\icons\Home_Page_Icons\slack-new-logo.svg" alt="Slack icon" class="button-icon"></img>
         <span>Join Our Slack Community</span>
       </a>
     </div>
