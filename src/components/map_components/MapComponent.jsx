@@ -1,98 +1,115 @@
-// import arcgis modules
+// import arcgis modules:
 import "@arcgis/map-components/components/arcgis-map";
 import "@arcgis/map-components/components/arcgis-zoom";
-import "@arcgis/map-components/components/arcgis-search";
+import "@arcgis/map-components/components/arcgis-locate";
 import "@arcgis/map-components/components/arcgis-layer-list";
 import "@arcgis/map-components/components/arcgis-home";
 import "@arcgis/map-components/components/arcgis-fullscreen";
+import "@arcgis/map-components/components/arcgis-search";
+import "@arcgis/map-components/components/arcgis-legend";
 import "@arcgis/core/assets/esri/themes/light/main.css";
 import esriConfig from "@arcgis/core/config";
-import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
-
-// imports from react
-import { useEffect, useRef, useState } from "react";
-
-//import custom components and helper functions
-import { populateAllLayers, initializeMapLayers, searchBySiteName, searchByProduce, clearSiteNameResults, clearProduceResults } from "./map_functions";
+// imports from react:
+import { useEffect, useState } from "react";
+//import custom components and helper functions:
+import { populateAllLayers, addLayersToMap, searchByProduce, clearProduceResults } from "./map_functions";
 import MapSearchBar from "./MapSearchBar";
 
 function MapComponent(){
-    // make sure to update the .env with the most current API key and set a new expiration date in Location Platform
-    // esriConfig.apiKey = import.meta.env.VITE_ESRI_API_KEY;
+    // ArcGIS API Key: update the .env with a new key before expiration
+    // restrict the API key to foodweb.community once deployed
+    const arcgisAPI = esriConfig.apiKey = import.meta.env.VITE_ESRI_API_KEY;
 
-    // useRefs for each of the Graphics layers (stable references to each layer, persists across renders and prevents re-rendering the map component when the layer changes)
-    const gardensLayer = useRef(
-        new GraphicsLayer({title: "Community Gardens", id: "gardensLayer"})
-    );
-    const farmsLayer = useRef(
-        new GraphicsLayer({title: "Local Farms", id: "farmsLayer"})
-    );
-    const farmersMarketsLayer = useRef(
-        new GraphicsLayer({title: "Farmers Markets", id: "farmersMarketsLayer"})
-    );
-    const foodBanksLayer = useRef(
-        new GraphicsLayer({title: "Food Banks", id: "foodBanksLayer"})
-    );
-    const compostLayer = useRef(
-        new GraphicsLayer({title: "Compost Collection Sites", id: "compostSitesLayer"})
-    );
+    const [mapView, setMapView] = useState(null);
+    const [layers, setLayers] = useState(null);
 
-    const [mapView, setMapView] = useState(null); // mapView to pass to the search by name function
-
-    // object with all layer refs
-    const allLayers = {
-        gardensLayer,
-        farmsLayer,
-        farmersMarketsLayer,
-        foodBanksLayer,
-        compostLayer
-    }
-
-    // populate the layers (run once after component mounts)
-    useEffect(() => {
-        populateAllLayers(allLayers);
-    }, []); 
-
-    // add the layers to the map
+    // store the map view once available
     const handleViewReady = (event) => {
-        const viewElement = event.target;
-        initializeMapLayers(viewElement, allLayers);
-        setMapView(viewElement);
+        const mapView = event.target;
+        setMapView(mapView)
     }
+
+    // populate the layers, add them to the map, and store them in state when mapView is ready
+    useEffect(() => {
+        async function loadMap() {
+            const layers = await populateAllLayers();
+            setLayers(layers);
+
+            if (mapView && layers) {
+                addLayersToMap(mapView, layers);
+            }
+        }
+        loadMap();
+    }, [mapView]);
+
+    // define the sources and search criteria for the arcgis-search component
+    async function configureArcGISSearch() {
+        const search = document.querySelector("arcgis-search");
+        await search.componentOnReady();
+        search.sources = [
+            {layer: layers.gardensLayer, searchFields: ["Name"], displayField: "Name", exactMatch: false, outFields: ["*"], name: "Community Gardens"},
+            {layer: layers.farmsLayer, searchFields: ["Name"], displayField: "Name", exactMatch: false, outFields: ["*"], name: "Local Farms"},
+            {layer: layers.farmersMarketsLayer, searchFields: ["Name"], displayField: "Name", exactMatch: false, outFields: ["*"], name: "Farmers Markets"},
+            {layer: layers.foodBanksLayer, searchFields: ["Name"], displayField: "Name", exactMatch: false, outFields: ["*"], name: "Food Banks"},
+            {layer: layers.compostLayer, searchFields: ["Name"], displayField: "Name", exactMatch: false, outFields: ["*"], name: "Compost Collection Sites"},
+            {
+                name: "ArcGIS World Geocoding Service",
+                apiKey: arcgisAPI, // ensure that geocoding is enabled in api key
+                singleLineFieldName: "SingleLine",
+                url: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer",
+            }
+        ];
+    }
+
+    // add legend to the arcgis-layer-list component
+    async function addLegendToLayerList() {
+        document.querySelector("arcgis-layer-list").listItemCreatedFunction = (event) => {
+            const { item } = event;
+            if (item.layer.type != "group") {
+                item.panel = {
+                    content: "legend",
+                    open: false,
+                };
+            }
+        };
+    }
+
+    // call arcgis component functions when layers are ready
+    useEffect(() => {
+        if (layers) {
+            configureArcGISSearch();
+            addLegendToLayerList();
+        }
+    }, [layers]);
 
     return (
-        <div style={{ height: "100%", width: "100%" }}>
+        <div style={{ height: "61vh", width: "100%" }}>
             <arcgis-map
                 basemap="streets-navigation-vector"
                 zoom="8"
-                center={[-112.000000, 33.080000]}
-                style={{ height: "100%", width: "100%" }}
+                center={[-112.000000, 33.380000]}
+                style={{ height: "61vh", width: "100%" }}
                 onarcgisViewReadyChange={handleViewReady}
             >
+                <arcgis-search
+                    position="top-left"
+                    all-placeholder="Search for place"
+                    include-default-sources-disabled>
+                </arcgis-search>
                 <arcgis-fullscreen position="top-right" />
                 <arcgis-zoom position="top-right" />
-                <arcgis-search position="top-left" />
                 <arcgis-home position="top-right" />
-                <arcgis-layer-list position="top-left" />
-            </arcgis-map>
-            
-            <div className="search-bar-site-name-wrapper">
-                <MapSearchBar 
-                    placeholder="Search by Site Name"
-                    onSearch={(searchTerm => searchBySiteName(searchTerm, allLayers, mapView))}
-                    submitBtnIcon={"/assets/icons/search-location-icon.png"}
-                    clearFunction={() => clearSiteNameResults(mapView)}
-                />
-            </div>
+                <arcgis-layer-list position="bottom-left" />
 
-            <div className="search-bar-produce-wrapper">
-                <MapSearchBar 
-                    placeholder="Search for Produce"
-                    onSearch={(searchTerm => searchByProduce(searchTerm, allLayers))}
-                    submitBtnIcon={"/assets/icons/apple-search.png"}
-                    clearFunction={() => clearProduceResults(allLayers)}
-                />
-            </div>
+                <div className="search-bar-produce-wrapper">
+                    <MapSearchBar 
+                        placeholder="Search for produce"
+                        searchFunction={(searchTerm => searchByProduce(searchTerm, layers))}
+                        submitBtnIcon={"/assets/icons/apple-search.png"}
+                        clearFunction={() => clearProduceResults(layers)}
+                    />
+                </div>
+            </arcgis-map>
         </div>
     );
 }

@@ -1,11 +1,10 @@
 // import components
 import HeroSection from "../components/HeroSection"
-import '../components/home_components/HomePage.css';
+import './HomePage.css';
 
 function HomePage(){
     return (
         <>
-
             <HeroSection 
                title="Food Web"
                image="/assets/pictures/HomePageImage.webp"
@@ -15,11 +14,10 @@ function HomePage(){
             <div class="main-content">
                 {/* Mission Section */}
                 <section class="mission-section">
-                    <h2 class="mission-title">Our Mission</h2>
+                    <h2 class="mission-title">What is Food Web?</h2>
                     <p class="mission-description">
-                        Food Web is an initiative dedicated to connecting communities with their local food systems and building a network of local producers, gardeners, distributors, volunteers, and community members.
-                    </p>
-                              
+                        Food Web is a platform to connect communities with their local food systems and build a network of local producers, distributors, volunteers, and community members.
+                    </p>        
                     <h3 class="priorities-title">Our Priorities</h3>
                     <ul class="priorities-list">
                         <li>Increase access to local fresh food</li>
