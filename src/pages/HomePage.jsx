@@ -46,7 +46,7 @@ function HomePage(){
         <img src="assets/produce-icon.svg" alt="Education icon" class="button-icon"></img>
         <span>Learn About Sustainable Gardening</span>
       </a>
-      <a href="https://join.slack.com/t/food-web/shared_invite/zt-30ngo8ktg-AedgakrlhhP~nrNAZXPChw"
+      <a href="https://join.slack.com/t/food-web/shared_invite/zt-3ehkiaxvb-VciMeoyII1ErkxytcFHoPw"
         class="slack-button">
         <img src="assets/slack-new-logo.svg" alt="Slack icon" class="button-icon"></img>
         <span>Join Our Slack Community</span>
