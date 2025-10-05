@@ -8,19 +8,19 @@ import { supabase } from "../../supabaseClient";
 function createGraphic(site){
     const point = {
         type: "point",
-        longitude: site.Longitude,
-        latitude: site.Latitude
+        longitude: site.longitude,
+        latitude: site.latitude
     }
 
     const siteAttributes = {
-        ObjectID: site.Site_ID,
-        Name: site.Name,
-        Address: site.Address,
-        Website: site.Website,
-        Hours: site.Hours,
-        Contact: site.Contact,
-        Description: site.Description,
-        Produce: site.Produce    
+        ObjectID: site.id,
+        Name: site.name,
+        Address: site.address,
+        Website: site.website,
+        Hours: site.hours,
+        Contact: site.contact,
+        Description: site.description,
+        Produce: site.produce    
     }
 
     return new Graphic({
@@ -30,10 +30,10 @@ function createGraphic(site){
 }
 
 // populate layer
-async function populateLayer(tableName, icon) {
+async function populateLayer(siteType, icon, layerName) {
     try {
         // fetch the data from Supabase
-        const { data, error } = await supabase.from(tableName).select('*');
+        const { data, error } = await supabase.from("all_sites").select('*').eq("site_type", siteType);
 
         if (error) {
             console.error('Error loading data from Supabase', error)
@@ -45,7 +45,8 @@ async function populateLayer(tableName, icon) {
 
         // create the feature layer
         return new FeatureLayer({
-            title: tableName,
+            title: layerName,
+            objectIdField: "ObjectID",
             fields: [
                 {name: "ObjectID", type: "oid"},
                 {name: "Name", type: "string"},
@@ -62,8 +63,8 @@ async function populateLayer(tableName, icon) {
                 symbol: {
                     type: "picture-marker",
                     url: icon,
-                    width: "30px",
-                    height: "30px"
+                    width: "28px",
+                    height: "28px"
                 }
             },
             popupTemplate: {
@@ -71,7 +72,7 @@ async function populateLayer(tableName, icon) {
                 content: `
                     <b>Address:</b> {Address}<br><br>
                     <a href={Website} target=_blank><b>Visit Website</b></a><br><br>
-                    <b>Volunteer Hours:</b> {Hours}<br><br>
+                    <b>Volunteer Hours:<br></b>{Hours}<br><br>
                     <b>Contact:</b> {Contact}<br><br>
                     <b>Description:</b> {Description}<br><br>
                     <b>Available Produce:</b><br> {Produce}
@@ -87,23 +88,28 @@ async function populateLayer(tableName, icon) {
 // define the table name and marker icon for each layer
 const SITE_LAYERS = {
     GARDENS: {
-        tableName: "Community Gardens",
+        layerName: "Community Gardens",
+        siteType: "community_garden",
         icon: "/assets/icons/lettuce.png"
     },
     FARMS: {
-        tableName: "Local Farms",
+        layerName: "Local Farms",
+        siteType: "farm",
         icon: "/assets/icons/carrot.png"
     },
     FARMERS_MARKETS: {
-        tableName: "Farmers Markets",
+        layerName: "Farmers Markets",
+        siteType: "farmers_market",
         icon: "/assets/icons/strawberry.png"
     },
     FOOD_BANKS: {
-        tableName: "Food Banks",
+        layerName: "Food Banks",
+        siteType: "food_bank",
         icon: "/assets/icons/grapes.png"
     },
     COMPOST_SITES: {
-        tableName: "Compost Collection Sites",
+        layerName: "Compost Collection Sites",
+        siteType: "compost",
         icon: "/assets/icons/shovel.png"
     }
 };
@@ -112,11 +118,11 @@ const SITE_LAYERS = {
 export async function populateAllLayers() {
     try {
         const [gardens, farms, farmersMarkets, foodBanks, compostSites] = await Promise.all([
-            populateLayer(SITE_LAYERS.GARDENS.tableName, SITE_LAYERS.GARDENS.icon),
-            populateLayer(SITE_LAYERS.FARMS.tableName, SITE_LAYERS.FARMS.icon),
-            populateLayer(SITE_LAYERS.FARMERS_MARKETS.tableName, SITE_LAYERS.FARMERS_MARKETS.icon),
-            populateLayer(SITE_LAYERS.FOOD_BANKS.tableName, SITE_LAYERS.FOOD_BANKS.icon),
-            populateLayer(SITE_LAYERS.COMPOST_SITES.tableName, SITE_LAYERS.COMPOST_SITES.icon),
+            populateLayer(SITE_LAYERS.GARDENS.siteType, SITE_LAYERS.GARDENS.icon, SITE_LAYERS.GARDENS.layerName),
+            populateLayer(SITE_LAYERS.FARMS.siteType, SITE_LAYERS.FARMS.icon, SITE_LAYERS.FARMS.layerName),
+            populateLayer(SITE_LAYERS.FARMERS_MARKETS.siteType, SITE_LAYERS.FARMERS_MARKETS.icon, SITE_LAYERS.FARMERS_MARKETS.layerName),
+            populateLayer(SITE_LAYERS.FOOD_BANKS.siteType, SITE_LAYERS.FOOD_BANKS.icon, SITE_LAYERS.FOOD_BANKS.layerName),
+            populateLayer(SITE_LAYERS.COMPOST_SITES.siteType, SITE_LAYERS.COMPOST_SITES.icon, SITE_LAYERS.COMPOST_SITES.layerName),
         ]);
 
         const layers = {
