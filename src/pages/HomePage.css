@@ -14,8 +14,8 @@
     z-index: 2;
 }
 
-/* Mission Section Styles */
-.mission-section {
+/* Main Content Section Styles */
+.main-content-section {
     align-items: center;
     width: 100%;
     margin: auto;
@@ -24,13 +24,92 @@
     line-height: normal;
 }
 
+/* What is Food Web Styles */
+.whats-foodweb-title {
+    font-size: 36px;
+    color: #12451d;
+    margin-bottom: 0px;
+}
+
+.whats-foodweb-description {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: #2c4a34;
+    max-width: 850px;
+}
+
+/* Mission Styles */
 .mission-title {
     font-size: 36px;
     color: #12451d;
+    margin-bottom: 0px;
 }
 
 .mission-description {
     font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: #2c4a34;
+    max-width: 850px;
+}
+
+/* Our Vision Styles */
+.vision-title {
+    font-size: 36px;
+    color: #12451d;
+    margin-bottom: 0px;
+}
+
+.vision-description {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: #2c4a34;
+    max-width: 850px;
+}
+
+/* Contribute Styles */
+.contribute-title {
+    font-size: 36px;
+    color: #12451d;
+    margin-bottom: 0px;
+}
+
+.contribute-description {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: #2c4a34;
+    max-width: 850px;
+}
+
+.contribute-list {
+    font-size: 19px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    list-style-type: disc;
+    padding-left: 0;
+    margin-top: 20px;
+    flex-direction: column;
+}
+
+.contribute-list li {
+    margin-bottom: 12px;
+    color: #2c4a34;
+}
+
+/* Looking Forward Styles */
+.looking-forward-title {
+    font-size: 36px;
+    color: #12451d;
+    margin-bottom: 0px;
+}
+
+.looking-forward-description {
+    font-size: 24px;
+    margin-top: 10px;
     margin-bottom: 30px;
     color: #2c4a34;
     max-width: 850px;
@@ -71,7 +150,7 @@
     /* Control maximum width of buttons*/
     margin: auto;
     padding-top: 0%;
-    padding-bottom: 8%;
+    padding-bottom: 120%;
     padding-left: 20px;
 }
 
