@@ -27,9 +27,14 @@ nav {
 }
 
 ul {
-  display: flex;
-  padding: 5;
-  margin: 0;
+    display: flex;
+    padding: 5;
+    margin: 0;
+}
+
+.profile {
+    position: absolute;
+    right: 15px;
 }
 
 /* need to left-justify the logo */

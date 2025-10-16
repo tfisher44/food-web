@@ -105,7 +105,7 @@ function MapComponent(){
                     <MapSearchBar 
                         placeholder="Search for produce"
                         searchFunction={(searchTerm => searchByProduce(searchTerm, layers))}
-                        submitBtnIcon={"/assets/icons/apple-search.png"}
+                        submitBtnIcon={"/assets/icons/Map_Page_Icons/apple-search.png"}
                         clearFunction={() => clearProduceResults(layers)}
                     />
                 </div>

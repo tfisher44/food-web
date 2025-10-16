@@ -72,8 +72,8 @@ async function populateLayer(siteType, icon, layerName) {
                 content: `
                     <b>Address:</b> {Address}<br><br>
                     <a href={Website} target=_blank><b>Visit Website</b></a><br><br>
-                    <b>Volunteer Hours:<br></b>{Hours}<br><br>
                     <b>Contact:</b> {Contact}<br><br>
+                    <b>Hours:<br></b>{Hours}<br><br>
                     <b>Description:</b> {Description}<br><br>
                     <b>Available Produce:</b><br> {Produce}
                     `
@@ -90,27 +90,27 @@ const SITE_LAYERS = {
     GARDENS: {
         layerName: "Community Gardens",
         siteType: "community_garden",
-        icon: "/assets/icons/lettuce.png"
+        icon: "/assets/icons/Map_Page_Icons/lettuce.png"
     },
     FARMS: {
         layerName: "Local Farms",
         siteType: "farm",
-        icon: "/assets/icons/carrot.png"
+        icon: "/assets/icons/Map_Page_Icons/carrot.png"
     },
     FARMERS_MARKETS: {
         layerName: "Farmers Markets",
         siteType: "farmers_market",
-        icon: "/assets/icons/strawberry.png"
+        icon: "/assets/icons/Map_Page_Icons/strawberry.png"
     },
     FOOD_BANKS: {
         layerName: "Food Banks",
         siteType: "food_bank",
-        icon: "/assets/icons/grapes.png"
+        icon: "/assets/icons/Map_Page_Icons/grapes.png"
     },
     COMPOST_SITES: {
         layerName: "Compost Collection Sites",
         siteType: "compost",
-        icon: "/assets/icons/shovel.png"
+        icon: "/assets/icons/Map_Page_Icons/shovel.png"
     }
 };
 

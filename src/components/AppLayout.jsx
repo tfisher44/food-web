@@ -1,10 +1,10 @@
 import Navbar from "./Navbar"
 
-function AppLayout({ children }){
+function AppLayout({ children, session }){
     return (
         <>
             <header>
-                <Navbar></Navbar>
+                <Navbar session={session}/>
             </header>
 
             <main>{children}</main>

@@ -12,26 +12,26 @@ import ProfilePage from "./pages/ProfilePage"
 
 function App() {
 
-  // // user session
-  // const [session, setSession] = useState(null);
+  // user session
+  const [session, setSession] = useState(null);
 
-  // useEffect(() => {
-  //   supabase.auth.getSession().then(({ data: { session } }) => {
-  //     setSession(session)
-  //   })
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+    })
 
-  //   // listen for changes in authentication
-  //   const { data: { subscription }, } = supabase.auth.onAuthStateChange((_event, session) => {
-  //       setSession(session)
-  //   })
+    // listen for changes in authentication
+    const { data: { subscription }, } = supabase.auth.onAuthStateChange((_event, session) => {
+        setSession(session)
+    })
 
-  //   return () => subscription.unsubscribe();
+    return () => subscription.unsubscribe();
 
-  // }, []);
+  }, []);
 
 
   return (
-    <AppLayout>
+    <AppLayout session={session}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/map-page" element={<MapPage />} />
@@ -40,8 +40,8 @@ function App() {
         <Route path="/educate-page" element={<EducatePage />} />
 
         {/* auth pages: */}
-        {/* <Route path="/login" element={<LoginPage />} /> */}
-        {/* <Route path="/profile" element={<ProfilePage session={session} />} /> */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </AppLayout>
   )

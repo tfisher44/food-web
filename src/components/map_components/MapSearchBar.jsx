@@ -30,7 +30,7 @@ function MapSearchBar({placeholder, searchFunction, submitBtnIcon, clearFunction
             </button>
 
             <button id="clear-btn" type="button" onClick={handleClear}>
-                <img src="/assets/icons/close-line-icon.png" alt="Clear"/>
+                <img src="/assets/icons/Map_Page_Icons/close-line-icon.png" alt="Clear"/>
             </button>
         </form>
     )
