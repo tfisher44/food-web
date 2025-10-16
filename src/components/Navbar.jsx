@@ -9,6 +9,7 @@ function Navbar({session}){
 
             <ul>
                 <li><Link to="/">Home</Link></li>
+                <li><Link to="/about-page">About</Link></li>
                 <li><Link to="/map-page">Map</Link></li>
                 <li><Link to="/calendar-page">Calendar</Link></li>
                 <li><Link to="/projects-page">Projects</Link></li>

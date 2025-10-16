@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from "./supabaseClient";
 import AppLayout from "./components/AppLayout"
 import HomePage from "./pages/HomePage"
+import AboutPage from "./pages/AboutPage"
 import MapPage from "./pages/MapPage"
 import CalendarPage from "./pages/CalendarPage"
 import EducatePage from "./pages/EducatePage"
@@ -35,6 +36,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/map-page" element={<MapPage />} />
+        <Route path="/about-page" element={<AboutPage/>}/>
         <Route path="/calendar-page" element={<CalendarPage />} />
         <Route path="/projects-page" element={<ProjectsPage />} />
         <Route path="/educate-page" element={<EducatePage />} />
