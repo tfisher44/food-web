@@ -8,8 +8,9 @@ import MapPage from "./pages/MapPage"
 import CalendarPage from "./pages/CalendarPage"
 import EducatePage from "./pages/EducatePage"
 import ProjectsPage from "./pages/ProjectsPage"
-import LoginPage from "./pages/LoginPage"
-import ProfilePage from "./pages/ProfilePage"
+import AuthPage from "./pages/AuthPage"
+import CommunityMemberPage from "./pages/CommunityMemberPage"
+import SiteManagerPage from "./pages/SiteManagerPage"
 
 function App() {
 
@@ -34,16 +35,17 @@ function App() {
   return (
     <AppLayout session={session}>
       <Routes>
+        {/* main pages: */}
         <Route path="/" element={<HomePage />} />
         <Route path="/map-page" element={<MapPage />} />
         <Route path="/about-page" element={<AboutPage/>}/>
         <Route path="/calendar-page" element={<CalendarPage />} />
         <Route path="/projects-page" element={<ProjectsPage />} />
         <Route path="/educate-page" element={<EducatePage />} />
-
         {/* auth pages: */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/login" element={<AuthPage />} />
+        <Route path="/community-member-page" element={<CommunityMemberPage />} />
+        <Route path="/site-manager-page" element={<SiteManagerPage />} />
       </Routes>
     </AppLayout>
   )
