@@ -23,7 +23,7 @@
 .menu-container {
     position: absolute;
     width: 200px;
-    height: 500x;
+    height: 120px;
     background-color: rgb(255, 255, 255);
     right: 0px;
     border-radius: 7px;
@@ -35,7 +35,15 @@
 }
 
 .signIn-btn {
-    margin-top: 20px;
+    margin-top: 0px;
+    padding: 5px 12px;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+}
+
+.signOut-btn {
+    margin-top: 0px;
     padding: 5px 12px;
     cursor: pointer;
     width: 100px;

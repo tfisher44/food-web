@@ -12,7 +12,7 @@ export default function SignUp({onSignUpSucess}) {
         password: password,
         options: {
           data: {
-            full_name: name,
+            display_name: name,
           },
         },
     });
@@ -20,7 +20,10 @@ export default function SignUp({onSignUpSucess}) {
     if (error) {
         alert(error.message);
     } else {
-        if (onSignUpSucess) {onSignUpSucess()};
+        if (onSignUpSucess) {
+          onSignUpSucess();
+          alert("Please check your email & follow link to finish account registration")
+        };
     }
 }
 
