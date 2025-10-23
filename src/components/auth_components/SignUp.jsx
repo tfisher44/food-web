@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../../supabaseClient";
+import "./SignUp.css"
 
 export default function SignUp({onSignUpSucess}) {
   const [email, setEmail] = useState("");
@@ -28,12 +29,14 @@ export default function SignUp({onSignUpSucess}) {
 }
 
   return (
-    <form className="sigin-form"
+    <form className="signup-form"
     onSubmit={async (e) => {
         e.preventDefault();
         await signUpNewUser();
-    }}
-        >
+    }}>
+        <h2>Create a new account</h2>
+
+        <p>Name</p>
         <input
         type="text"
         placeholder="Your Name"
@@ -41,6 +44,7 @@ export default function SignUp({onSignUpSucess}) {
         onChange={(e) => setName(e.target.value)}
         />
         
+        <p>Email</p>
         <input
         type="email"
         placeholder="Email"
@@ -48,6 +52,7 @@ export default function SignUp({onSignUpSucess}) {
         onChange={(e) => setEmail(e.target.value)}
         />
 
+        <p>Password</p>
         <input
         type="password"
         placeholder="Password"

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../../supabaseClient";
 import { useNavigate } from "react-router-dom";
+import "./SignIn.css"
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -35,13 +36,14 @@ export default function SignIn() {
   }
 
   return (
-    <div>
-      <form className="sigin-form"
+      <form className="signin-form"
       onSubmit={async (e) => {
           e.preventDefault();
           await signInWithEmail();
-      }}
-          >
+      }}>
+          <h2>Login to your account</h2>
+          
+          <p>Email</p>
           <input
           type="email"
           placeholder="Email"
@@ -49,6 +51,7 @@ export default function SignIn() {
           onChange={(e) => setEmail(e.target.value)}
           />
 
+          <p>Password</p>
           <input
           type="password"
           placeholder="Password"
@@ -56,8 +59,7 @@ export default function SignIn() {
           onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button type="submit">Sign In</button>
+          <button type="submit">Login</button>
       </form>
-    </div>
   )
 }
