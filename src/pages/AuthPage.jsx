@@ -10,7 +10,8 @@ export default function AuthPage() {
 
   return (
     <div className="auth-container">
-      {showSignUp? (<SignUp onSignUpSucess={() => setShowSignUp(false)}/>) : (<SignIn />)}
+      {showSignUp? (<SignUp onSignUpSuccess={() => setShowSignUp(false)}/>) : (<SignIn />)}
+      {/* {!showSignUp && (<button type="button" onClick={() => setShowResetPassword(true)}>Forgot your password?</button>)} */}
 
       <button className="switch-btn" onClick={() => setShowSignUp(!showSignUp)}>
         {showSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}

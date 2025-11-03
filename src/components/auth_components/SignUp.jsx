@@ -2,7 +2,7 @@ import { useState } from "react";
 import { supabase } from "../../supabaseClient";
 import "./SignUp.css"
 
-export default function SignUp({onSignUpSucess}) {
+export default function SignUp({onSignUpSuccess}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -21,7 +21,7 @@ export default function SignUp({onSignUpSucess}) {
     if (error) {
         alert(error.message);
     } else {
-        if (onSignUpSucess) {
+        if (onSignUpSuccess) {
           onSignUpSucess();
           alert("Please check your email & follow link to finish account registration")
         };

@@ -29,10 +29,6 @@ export default function SignIn() {
     } else {
       navigate("/community-member-page");
     }
-
-    if (siteManagerError) {
-        console.log("Error checking site_managers", siteManagerError)
-    }
   }
 
   return (
@@ -59,7 +55,9 @@ export default function SignIn() {
           onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button type="submit">Login</button>
+          <button className="login-btn" type="submit">Login</button>
+
+          <button className="reset-password-link" type="button" onClick={() => navigate("/reset-email-password")}><u>Forgot your password?</u></button>
       </form>
   )
 }

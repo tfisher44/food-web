@@ -11,6 +11,8 @@ import ProjectsPage from "./pages/ProjectsPage"
 import AuthPage from "./pages/AuthPage"
 import CommunityMemberPage from "./pages/CommunityMemberPage"
 import SiteManagerPage from "./pages/SiteManagerPage"
+import ResetEmailPassword from "./pages/ResetEmailPassword"
+import UpdatePassword from "./pages/UpdatePassword"
 
 function App() {
 
@@ -44,6 +46,8 @@ function App() {
         <Route path="/educate-page" element={<EducatePage />} />
         {/* auth pages: */}
         <Route path="/login" element={<AuthPage />} />
+        <Route path="/reset-email-password" element={<ResetEmailPassword />} />
+        <Route path="/change-password" element={<UpdatePassword />} />
         <Route path="/community-member-page" element={<CommunityMemberPage />} />
         <Route path="/site-manager-page" element={<SiteManagerPage />} />
       </Routes>
