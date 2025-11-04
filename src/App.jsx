@@ -13,6 +13,8 @@ import CommunityMemberPage from "./pages/CommunityMemberPage"
 import SiteManagerPage from "./pages/SiteManagerPage"
 import ResetEmailPassword from "./pages/ResetEmailPassword"
 import UpdatePassword from "./pages/UpdatePassword"
+import ProtectedRoute from "./components/auth_components/ProtectedRoute"
+import SMProtectedRoute from "./components/auth_components/SMProtectedRoute"
 
 function App() {
 
@@ -48,8 +50,8 @@ function App() {
         <Route path="/login" element={<AuthPage />} />
         <Route path="/reset-email-password" element={<ResetEmailPassword />} />
         <Route path="/change-password" element={<UpdatePassword />} />
-        <Route path="/community-member-page" element={<CommunityMemberPage />} />
-        <Route path="/site-manager-page" element={<SiteManagerPage />} />
+        <Route path="/community-member-page" element={<ProtectedRoute session={session}><CommunityMemberPage /></ProtectedRoute>} />
+        <Route path="/site-manager-page" element={<ProtectedRoute session={session}><SMProtectedRoute session={session}><SiteManagerPage /></SMProtectedRoute></ProtectedRoute>} />
       </Routes>
     </AppLayout>
   )
