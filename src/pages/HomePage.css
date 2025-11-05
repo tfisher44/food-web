@@ -3,141 +3,26 @@
     box-sizing: border-box;
 }
 
-/* Main Content Layout */
-.main-content {
+/* What is Food Web and Buttons Layout */
+.food-web-and-buttons {
     display: flex;
     justify-content: center;
     /* Creates space between mission and buttons */
     padding-left: 75px;
     padding-right: 75px;
+    padding-bottom: 50px;
     background-color: #d2e8c9;
     z-index: 2;
 }
 
-/* Main Content Section Styles */
-.main-content-section {
+/* What is Food Web section */
+.whats-foodweb-section {
     align-items: center;
     width: 100%;
     margin: auto;
     color: #12451d;
     font-family: 'Calcite', Avenir Next;
     line-height: normal;
-}
-
-/* What is Food Web Styles */
-.whats-foodweb-title {
-    font-size: 36px;
-    color: #12451d;
-    margin-bottom: 0px;
-}
-
-.whats-foodweb-description {
-    font-size: 24px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    color: #2c4a34;
-    max-width: 850px;
-}
-
-/* Mission Styles */
-.mission-title {
-    font-size: 36px;
-    color: #12451d;
-    margin-bottom: 0px;
-}
-
-.mission-description {
-    font-size: 24px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    color: #2c4a34;
-    max-width: 850px;
-}
-
-/* Our Vision Styles */
-.vision-title {
-    font-size: 36px;
-    color: #12451d;
-    margin-bottom: 0px;
-}
-
-.vision-description {
-    font-size: 24px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    color: #2c4a34;
-    max-width: 850px;
-}
-
-/* Contribute Styles */
-.contribute-title {
-    font-size: 36px;
-    color: #12451d;
-    margin-bottom: 0px;
-}
-
-.contribute-description {
-    font-size: 24px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    color: #2c4a34;
-    max-width: 850px;
-}
-
-.contribute-list {
-    font-size: 19px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    list-style-type: disc;
-    padding-left: 0;
-    margin-top: 20px;
-    flex-direction: column;
-}
-
-.contribute-list li {
-    margin-bottom: 12px;
-    color: #2c4a34;
-}
-
-/* Looking Forward Styles */
-.looking-forward-title {
-    font-size: 36px;
-    color: #12451d;
-    margin-bottom: 0px;
-}
-
-.looking-forward-description {
-    font-size: 24px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    color: #2c4a34;
-    max-width: 850px;
-}
-
-/* Priority List Styles */
-
-.priorities-title {
-    font-size: 36px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    color: #12451d;
-}
-
-.priorities-list {
-    font-size: 19px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding-left: 0;
-    margin-top: 20px;
-    flex-direction: column;
-}
-
-.priorities-list li {
-    margin-bottom: 12px;
-    color: #2c4a34;
 }
 
 /* Action Buttons Layout */
@@ -149,8 +34,7 @@
     max-width: 420px;
     /* Control maximum width of buttons*/
     margin: auto;
-    padding-top: 0%;
-    padding-bottom: 120%;
+    padding-top: 4%;
     padding-left: 20px;
 }
 
@@ -195,4 +79,197 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: rgba(2255, 254, 225, 0.884);
     /* Slightly more opaque on hover */
+}
+
+/* Main Content Section Styles */
+.main-content-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    color: #12451d;
+    font-family: 'Calcite', Avenir Next;
+    line-height: normal;
+}
+
+.mission-vision {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    color: #12451d;
+    font-family: 'Calcite', Avenir Next;
+    line-height: normal;
+}
+
+.mission-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+    position: relative;
+}
+
+.mission-section::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;        
+    width: 1px;
+    background-color: #12451d;
+}
+
+.vision-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+}
+
+/* What is Food Web Styles */
+.whats-foodweb-title {
+    font-size: 36px;
+    color: #12451d;
+    margin-bottom: 0px;
+}
+
+.whats-foodweb-description {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: #2c4a34;
+    max-width: 850px;
+}
+
+/* Mission Styles */
+.mission-title {
+    font-size: 36px;
+    color: #12451d;
+    margin-bottom: 0px;
+}
+
+.mission-description {
+    font-size: 19px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: #2c4a34;
+    max-width: 850px;
+}
+
+/* Our Vision Styles */
+.vision-title {
+    font-size: 36px;
+    color: #12451d;
+    margin-bottom: 0px;
+}
+
+.vision-description {
+    font-size: 19px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: #2c4a34;
+    max-width: 850px;
+}
+
+/* Contribute and Looking Forward Layout */
+.contribute-forward {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    color: #12451d;
+    font-family: 'Calcite', Avenir Next;
+    line-height: normal;
+    padding-bottom: 50px;
+}
+
+/* Contribute Styles */
+.contribute-title {
+    font-size: 36px;
+    color: #12451d;
+    margin-bottom: 0px;
+}
+
+.contribute-description {
+    font-size: 19px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: #2c4a34;
+    max-width: 850px;
+}
+
+.contribute-list {
+    font-size: 19px;
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    list-style-type: disc;
+    padding-left: 0;
+    margin-top: 20px;
+    flex-direction: column;
+}
+
+.contribute-list li {
+    margin-bottom: 12px;
+    color: #2c4a34;
+}
+
+.text-link {
+    color: #12451d;
+}
+
+/* Looking Forward Styles */
+.looking-forward-title {
+    padding-top: 10px;
+    font-size: 36px;
+    color: #12451d;
+    margin-bottom: 0px;
+}
+
+.looking-forward-description {
+    font-size: 19px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: #2c4a34;
+    max-width: 850px;
+}
+
+.footer-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #12451d;
+
+}
+.logo {
+    width: 130px;
+    height: 130px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.insta-link {
+    color: #d2e8c9;
+}
+
+.social-links img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
 }
