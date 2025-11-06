@@ -50,8 +50,8 @@ function App() {
         <Route path="/login" element={<AuthPage />} />
         <Route path="/reset-email-password" element={<ResetEmailPassword />} />
         <Route path="/change-password" element={<UpdatePassword />} />
-        <Route path="/community-member-page" element={<ProtectedRoute session={session}><CommunityMemberPage /></ProtectedRoute>} />
-        <Route path="/site-manager-page" element={<ProtectedRoute session={session}><SMProtectedRoute session={session}><SiteManagerPage /></SMProtectedRoute></ProtectedRoute>} />
+        <Route path="/community-member-page" element={<ProtectedRoute session={session}><CommunityMemberPage session={session} /></ProtectedRoute>} />
+        <Route path="/site-manager-page" element={<ProtectedRoute session={session}><SMProtectedRoute session={session}><SiteManagerPage session={session}/></SMProtectedRoute></ProtectedRoute>} />
       </Routes>
     </AppLayout>
   )

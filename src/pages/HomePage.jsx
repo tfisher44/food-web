@@ -53,7 +53,7 @@ function HomePage(){
                     <div class="mission-section">
                         <h2 class="mission-title">Our Mission</h2>
                         <p class="mission-description">
-                            Our mission is to increase access to locally grown fresh produce, inspire community engagement, support local growers, and facilitate collaboration in the food system. We aim to make it easy to find community gardens, start new ones, and connect with volunteers. We strive to bridge the gap between growers and consumers by enabling site managers to make their information and available produce visible to the community on a centralized map.
+                            Our mission is to increase access to locally grown fresh produce, inspire community engagement, support local growers, and facilitate collaboration in the food system. We aim to make it easy to find community gardens, start new ones, and connect with volunteers. We strive to bridge the gap between growers and consumers by enabling site managers to make their information and produce visible to the community on a centralized map.
                         </p>
                     </div>
 
@@ -61,7 +61,7 @@ function HomePage(){
                     <div class="vision-section">
                         <h2 class="vision-title">Our Vision</h2>
                         <p class="vision-description">
-                            Our mission is to increase access to locally grown fresh produce, inspire community engagement, support local growers, and facilitate collaboration in the food system. We aim to make it easy to find community gardens, start new ones, and connect with volunteers. We strive to bridge the gap between growers and consumers by enabling site managers to make their information and available produce visible to the community on a centralized map.
+                            We envision a world where you can walk a few minutes from your home and gather a basket of fresh fruit and vegetables from your neighborhood garden, instead of a bag of chips from the corner store. Urban areas across the United States are filled with green growing spaces and local farms that have been integrated into urban planning or transformed from vacant lots, helping to create a network of diverse sources of fresh food. Excess produce makes it to food banks and nearby residents before going to waste, helping to combat food insecurity. There are plenty of opportunities to get involved and the food system is resilient because everyone has a unique and vital hand in it.
                         </p>
                     </div>
                 </div>
@@ -99,11 +99,11 @@ function HomePage(){
             {/* </section> */}
 
             <footer class="footer-section">
-                <img src="public\assets\icons\Home_Page_Icons\logo.svg" alt="Food Web Logo" class="logo"></img>
+                <img src="assets\icons\Home_Page_Icons\logo.svg" alt="Food Web Logo" class="logo"></img>
                 <div class="social-links">
                     <a href="https://www.instagram.com/foodweb.community" class="insta-link" 
                     target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                    <img src="public\assets\icons\Home_Page_Icons\instagram-icon.svg" alt="Instagram"></img>
+                    <img src="assets\icons\Home_Page_Icons\instagram-icon.svg" alt="Instagram"></img>
                     <span>foodweb.community</span>
                     </a>
                 </div>

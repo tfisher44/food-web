@@ -27,7 +27,13 @@ function SMProtectedRoute({ session, children }) {
     }, [session])
 
     if (siteManager == null) {
-        return <div>Loading...</div>
+        return <div style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100bh",
+        }}
+        >Loading...</div>
     }
     else if (!siteManager) {
         return <Navigate to="/login" replace />
