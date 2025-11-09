@@ -1,11 +1,15 @@
 import { supabase } from "../supabaseClient"
 import { useState, useEffect } from "react"
 import "./SiteManagerPage.css"
+import ProduceEditor from "../components/sitemanager_components/ProduceEditor"
+import SiteProfileEditor from "../components/sitemanager_components/SiteProfileEditor"
 
 function SiteManagerPage({session}) {
     const [siteName, setSiteName] = useState("");
     const [siteID, setSiteID] = useState(null);
     const dispalyName = session.user.user_metadata.display_name;
+    const [showProduceEditor, setShowProduceEditor] = useState(false);
+    const [showSiteProfileEditor, setShowSiteProfileEditor] = useState(false);
 
     useEffect(() => {
         async function get_site_data(){
@@ -34,11 +38,13 @@ function SiteManagerPage({session}) {
         <div className="SM-page-content">
             <h1>Hello {dispalyName}!</h1>
             <h3>Role: Site Manager</h3>
-            <h3>My site: {siteName}</h3>
+            <h3>My Site: {siteName}</h3>
 
-            {/* create components for each popup and pass siteID as a parameter*/}
-            <button type="button">Update Available Produce</button> 
-            <button type="button">Edite Site Profile Information</button>
+            <button className="SM-btn" id="produce-editor-btn" type="button" onClick={() => setShowProduceEditor(true)}>Update Produce / Food / Products</button> 
+            {showProduceEditor && <ProduceEditor onClose={() => setShowProduceEditor(false)} siteID={siteID}/>}
+
+            <button className="SM-btn" id="profile-editor-btn" type="button" onClick={() => setShowSiteProfileEditor(true)}>Edit Site Profile Information</button>
+            {showSiteProfileEditor && <SiteProfileEditor onClose={() => setShowSiteProfileEditor(false)} siteID={siteID}/>}
         </div>
     )
 }

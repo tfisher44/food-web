@@ -47,14 +47,14 @@ function ProfileMenu({session}) {
             <div className="menu-container">
                 {!session &&
                     <>
-                        <button className="signIn-btn" type="button" onClick={() => navigate("/login")}>Sign-In</button>
+                        <button className="profile-menu-btn" id="signIn-btn" type="button" onClick={() => navigate("/login")}>Sign-In</button>
                         <p>Sign in to manage your site</p>
                     </>
                 }
                 {session && (
                     <>
-                        <button className="signOut-btn" type="button" onClick={async (e) => {await signOut()}}>Sign Out</button>
-                        <button className="account-btn" type="button" onClick={async (e) => {await accountRedirect()}}>My Account</button>
+                        <button className="profile-menu-btn" id="signOut-btn" type="button" onClick={async (e) => {await signOut()}}>Sign Out</button>
+                        <button className="profile-menu-btn" id="account-btn" type="button" onClick={async (e) => {await accountRedirect()}}>My Account</button>
                     </>
                 )}
             </div>

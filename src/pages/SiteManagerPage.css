@@ -5,3 +5,24 @@
     align-items: center;
     width: 100%;
 }
+
+.SM-btn {
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    width: 300px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#produce-editor-btn {
+    background-color: #d4a596;
+}
+
+#profile-editor-btn {
+    background-color: #bea1d6;
+}
+

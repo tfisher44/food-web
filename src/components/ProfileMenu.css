@@ -22,42 +22,49 @@
 
 .menu-container {
     position: absolute;
-    width: 200px;
+    width: 180px;
     height: 120px;
     background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     right: 0px;
-    border-radius: 7px;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     gap: 8px;
     justify-content: center;
     align-items: center;
+    padding: 5px 15px;
 }
 
-.signIn-btn {
+.profile-menu-btn {
+    border-radius: 8px;
+    border-width: 1px;
+    margin-bottom: 5px;
     margin-top: 0px;
     padding: 5px 12px;
     cursor: pointer;
     width: 100px;
-    height: 30px;
+    height: 34px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.signOut-btn {
-    margin-top: 0px;
-    padding: 5px 12px;
+#signIn-btn {
+    margin-top: 15px;
+    background-color: rgb(228, 221, 162);
+}
+
+#signOut-btn {
+    margin-top: 15px;
+    background-color: rgb(228, 221, 162);
+}
+
+#account-btn {
     cursor: pointer;
-    width: 100px;
-    height: 30px;
+    background-color: rgb(172, 208, 231);
+    margin-bottom: 15px;
 }
 
-.account-btn {
-    padding: 5px 12px;
-    cursor: pointer;
-    width: 100px;
-    height: 30px;
-}
-
-p {
+.profile-menu-container p {
     color: black;
     font-size: 14px;
 }
