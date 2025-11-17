@@ -65,7 +65,7 @@ export default function SiteProfileEditor({onClose, siteID}) {
                     <input id="hoursInput" value={hours} onChange={(e) => setHours(e.target.value)}></input>
 
                     <label htmlFor="descriptionInput">Description</label>
-                    <textarea id="descriptionInput" value={description} onChange={(e) => setDescription(e.target.value)} rows="12" cols="40" maxLength="200"></textarea>
+                    <textarea id="descriptionInput" value={description} onChange={(e) => setDescription(e.target.value)} rows="12" cols="40" maxLength="500"></textarea>
 
                     <button id="update-btn" type="submit">Update Profile</button>
                 </form>

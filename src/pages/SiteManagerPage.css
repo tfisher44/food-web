@@ -9,7 +9,6 @@
 .SM-btn {
     height: 40px;
     border-radius: 8px;
-    border: none;
     font-size: 1rem;
     margin-bottom: 10px;
     width: 300px;
@@ -19,10 +18,13 @@
 }
 
 #produce-editor-btn {
-    background-color: #d4a596;
+    background-color: #e0bf93;
 }
 
 #profile-editor-btn {
-    background-color: #bea1d6;
+    background-color: #d5b9e2;
 }
 
+#permissions-btn {
+    background-color: #e4b1ba;
+}

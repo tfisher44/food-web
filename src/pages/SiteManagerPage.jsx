@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import "./SiteManagerPage.css"
 import ProduceEditor from "../components/sitemanager_components/ProduceEditor"
 import SiteProfileEditor from "../components/sitemanager_components/SiteProfileEditor"
+import SitePermissionsPopup from "../components/sitemanager_components/SitePermissionsPopup"
 
 function SiteManagerPage({session}) {
     const [siteName, setSiteName] = useState("");
@@ -10,6 +11,7 @@ function SiteManagerPage({session}) {
     const dispalyName = session.user.user_metadata.display_name;
     const [showProduceEditor, setShowProduceEditor] = useState(false);
     const [showSiteProfileEditor, setShowSiteProfileEditor] = useState(false);
+    const [showSitePermissionsPopup, setShowitePermissionsPopup] = useState(false);
 
     useEffect(() => {
         async function get_site_data(){
@@ -37,14 +39,17 @@ function SiteManagerPage({session}) {
     return (
         <div className="SM-page-content">
             <h1>Hello {dispalyName}!</h1>
-            <h3>Role: Site Manager</h3>
-            <h3>My Site: {siteName}</h3>
+            <h2>Role: Site Manager</h2>
+            <h2>My Site: {siteName}</h2>
 
             <button className="SM-btn" id="produce-editor-btn" type="button" onClick={() => setShowProduceEditor(true)}>Update Produce / Food / Products</button> 
             {showProduceEditor && <ProduceEditor onClose={() => setShowProduceEditor(false)} siteID={siteID}/>}
 
             <button className="SM-btn" id="profile-editor-btn" type="button" onClick={() => setShowSiteProfileEditor(true)}>Edit Site Profile Information</button>
             {showSiteProfileEditor && <SiteProfileEditor onClose={() => setShowSiteProfileEditor(false)} siteID={siteID}/>}
+
+            <button className="SM-btn" id="permissions-btn" type="button" onClick={() => setShowitePermissionsPopup(true)}>Manage Site Permissions</button>
+            {showSitePermissionsPopup && <SitePermissionsPopup onClose={() => setShowitePermissionsPopup(false)} siteID={siteID}/>}
         </div>
     )
 }

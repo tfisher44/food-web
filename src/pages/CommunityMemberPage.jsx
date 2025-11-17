@@ -10,7 +10,13 @@ function CommunityMemberPage({session}) {
             <h1>Hello {dispalyName}!</h1>
             <h3>Role: Community Member</h3>
             {/* TODO: add form link to here */}
-            <h3>If you are a site manager, please request editing permissions to your site here.</h3>
+            <h3>If you manage a site, please request editing permissions to your site {" "}
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScEu7QLUfBBMhLidhB5wUJ_1GCGTWdpuR9KccBZlrDXylGezQ/viewform?usp=dialog"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    here
+                </a>.
+            </h3>
         </div>
     )
 }

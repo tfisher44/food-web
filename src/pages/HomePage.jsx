@@ -18,7 +18,7 @@ function HomePage(){
                     {/* What is Food Web Section */}
                     <h2 class ="whats-foodweb-title">What is Food Web?</h2>
                     <p class="whats-foodweb-description">
-                        Food Web is a platform to connect communities with their local food systems through a network of local producers, distributors, volunteers, and community members.
+                        Food Web is a platform to connect communities with their local food systems through a network of growers, distributors, volunteers, and community members.
                     </p>
                 </section>
 
@@ -76,7 +76,7 @@ function HomePage(){
                     {/* Contribute Section */}
                     <h2 class="contribute-title">Contribute</h2>
                     <p class="contribute-description">
-                        In an increasingly industrialized society, these aren’t just beautiful ideas – the power of community and sustainable food systems is absolutely essential to the future of public and environmental health, and everyone’s quality of life. We hope you’ll share a piece of our vision and contribute to bringing it to life.
+                        The power of community and sustainable food systems is absolutely essential to the future of public and environmental health and everyone's quality of life. We hope you’ll share a piece of our vision and contribute to bringing it to life.
                     </p>
                     <ul class="contribute-list">
                         <li>If you know of a site not yet on the map, please let us know <a href="https://docs.google.com/forms/d/e/1FAIpQLSfAeA8WzHOEPZ-Wi04f8yTwhQoeJuPxn7m9euEdPLvV0L_rrg/viewform"

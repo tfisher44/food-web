@@ -1,6 +1,6 @@
 .popup-overlay {
     position: fixed;
-    background: rgb(193, 182, 216);
+    background: #b0d5da;
     top: 15%;
     left: 25%;
     height: 70vh;
@@ -70,4 +70,11 @@
     margin-bottom: 10px;
     width: 70%;
     cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#descriptionInput {
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px;
 }

@@ -7,19 +7,19 @@ function Gallery(){
     <div class="gallery-container">
       <div class="gallery-track">
         <div class="gallery-slide">
-          <img src="public\assets\pictures\Gallery_Images\IMG_1125.webp" alt="In action"></img>
+          <img src="assets\pictures\Gallery_Images\IMG_1125.webp" alt="In action"></img>
         </div>
         <div class="gallery-slide">
-          <img src="public\assets\pictures\Gallery_Images\20240914_091440.webp" alt="In action"></img>
+          <img src="assets\pictures\Gallery_Images\20240914_091440.webp" alt="In action"></img>
         </div>
         <div class="gallery-slide">
-          <img src="public\assets\pictures\Gallery_Images\IMG_6385.jpg" alt="In action"></img>
+          <img src="assets\pictures\Gallery_Images\IMG_6385.jpg" alt="In action"></img>
         </div>
         <div class="gallery-slide">
-          <img src="public\assets\pictures\Gallery_Images\WhatsApp_Image_2025-02-19_at_19.42.49_0e9932d1.webp" alt="In Action"></img>
+          <img src="assets\pictures\Gallery_Images\WhatsApp_Image_2025-02-19_at_19.42.49_0e9932d1.webp" alt="In Action"></img>
         </div>
         <div class="gallery-slide">
-          <img src="public\assets\pictures\Gallery_Images\IMG_1515.webp" alt="In Action"></img>
+          <img src="assets\pictures\Gallery_Images\IMG_1515.webp" alt="In Action"></img>
         </div>
         {/* Add more slides as needed */}
       </div>

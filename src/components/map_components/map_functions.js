@@ -49,13 +49,13 @@ async function populateLayer(siteType, icon, layerName) {
             objectIdField: "ObjectID",
             fields: [
                 {name: "ObjectID", type: "oid"},
-                {name: "Name", type: "string"},
-                {name: "Address", type: "string"},
-                {name: "Website", type: "string"},
-                {name: "Hours", type: "string"},
-                {name: "Contact", type: "string"},
-                {name: "Description", type: "string"},
-                {name: "Produce", type: "string"}
+                {name: "name", type: "string"},
+                {name: "address", type: "string"},
+                {name: "website", type: "string"},
+                {name: "hours", type: "string"},
+                {name: "contact", type: "string"},
+                {name: "description", type: "string"},
+                {name: "produce", type: "string"}
             ],
             source: graphics,
             renderer: {
@@ -70,12 +70,12 @@ async function populateLayer(siteType, icon, layerName) {
             popupTemplate: {
                 title: "{Name}",
                 content: `
-                    <b>Address:</b> {Address}<br><br>
-                    <a href={Website} target=_blank><b>Visit Website</b></a><br><br>
-                    <b>Contact:</b> {Contact}<br><br>
-                    <b>Hours:<br></b>{Hours}<br><br>
-                    <b>Description:</b> {Description}<br><br>
-                    <b>Available Produce:</b><br> {Produce}
+                    <b>Address:</b> {address}<br><br>
+                    <a href={website} target=_blank><b>Visit Website</b></a><br><br>
+                    <b>Contact:</b> {contact}<br><br>
+                    <b>Hours:<br></b>{hours}<br><br>
+                    <b>Description:</b> {description}<br><br>
+                    <b>Available Produce:</b><br> {produce}
                     `
             }
         })
@@ -157,8 +157,8 @@ export function searchByProduce(searchTerm, layers) {
 
     if (produce.trim() !== "") {
         
-        layers.gardensLayer.definitionExpression = `LOWER(Produce) LIKE '%${produce}%'`;
-        layers.farmsLayer.definitionExpression = `LOWER(Produce) LIKE '%${produce}%'`;
+        layers.gardensLayer.definitionExpression = `produce LIKE '%${produce}%'`;
+        layers.farmsLayer.definitionExpression = `produce LIKE '%${produce}%'`;
 
         // hide the other layers
         layers.farmersMarketsLayer.visible = false;

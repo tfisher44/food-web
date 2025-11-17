@@ -50,9 +50,9 @@ export default function ProduceEditor({onClose, siteID}){
                         <b>Example:</b>
                         <br />Watermelons, Free (4/3 - 4/30)<br />Carrots, $3/lb (5/1 - 5/30)
                     </p>
-                    <textarea value={produce} onChange={(e) => setProduce(e.target.value)} rows="15" cols="40" maxLength="200"></textarea>
+                    <textarea value={produce} onChange={(e) => setProduce(e.target.value)} rows="15" cols="50" maxLength="200"></textarea>
 
-                    <button type="submit">Update</button>
+                    <button id="produce-update-btn" type="submit">Update Produce</button>
                 </form>
             </div>
        </div> 

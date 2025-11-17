@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { supabase } from "../../supabaseClient";
-import { useNavigate } from "react-router-dom";
+import { supabase } from "../../supabaseClient"
+import { useNavigate } from "react-router-dom"
 import "./SignIn.css"
 
 export default function SignIn() {
@@ -23,6 +23,10 @@ export default function SignIn() {
     const userID = data.user.id;
 
     const { data: siteManager, error: siteManagerError } = await supabase.from("site_managers").select("user_id").eq("user_id", userID).single();
+
+    if (siteManagerError) {
+      console.log("Error fetching site manager data", error);
+    }
 
     if(siteManager) {
       navigate("/site-manager-page");
