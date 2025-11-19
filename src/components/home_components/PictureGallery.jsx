@@ -1,6 +1,6 @@
-import './Gallery.css';
+import './PictureGallery.css';
 
-function Gallery(){
+function PictureGallery(){
     return (
     <section className="gallery-section">
     <h2>Our Community in Action</h2>
@@ -35,4 +35,4 @@ function Gallery(){
     
 }
 
-export default Gallery;
+export default PictureGallery;

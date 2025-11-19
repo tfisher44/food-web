@@ -1,7 +1,7 @@
 // import components
 import HeroSection from "../components/HeroSection"
 import './HomePage.css';
-import Gallery from "../components/home_components/Gallery";
+import PictureGallery from "../components/home_components/PictureGallery";
 
 function HomePage(){
     return (
@@ -69,7 +69,7 @@ function HomePage(){
                 {/* Our Community in Action - maybe we wanna have this as its own component? */}
                  {/* style={{ position: "relative", width: "100%", height: "61vh" }} */}
                 <div className="gallery-container">
-                    <Gallery />
+                    <PictureGallery />
                 </div>
 
                 <div class="contribute-forward">
