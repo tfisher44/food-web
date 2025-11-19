@@ -98,7 +98,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     margin: auto;
     color: #12451d;
@@ -112,7 +112,9 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
     position: relative;
 }
 
@@ -121,7 +123,7 @@
     position: absolute;
     right: 0;
     top: 20%;
-    height: 60%;        
+    height: 80%;        
     width: 1px;
     background-color: #12451d;
 }
@@ -132,20 +134,21 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;;
 }
 
 /* What is Food Web Styles */
 .whats-foodweb-title {
     font-size: 36px;
     color: #12451d;
-    margin-bottom: 0px;
 }
 
 .whats-foodweb-description {
     font-size: 24px;
     margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     color: #2c4a34;
     max-width: 850px;
 }
