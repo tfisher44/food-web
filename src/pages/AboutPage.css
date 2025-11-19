@@ -1,0 +1,14 @@
+#our-story {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    color: #12451d;
+    font-family: 'Calcite', Avenir Next;
+    line-height: normal;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 17px;
+}
