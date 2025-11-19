@@ -6,9 +6,15 @@ export default function ResetEmailPassword(){
     const [email, setEmail] = useState("");
 
     async function resetPassword() {
-        await supabase.auth.resetPasswordForEmail(email, {
+        const {error} = await supabase.auth.resetPasswordForEmail(email, {
             redirectTo: 'http://localhost:5173/change-password', // TODO: change this to the current domain name and move to environment variables in Netlify
         });
+
+        if (error) {
+            alert("Error sending reset password email: " + error.message);
+            return;
+        }
+
         alert("Please check your email");
     }
 

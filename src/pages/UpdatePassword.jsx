@@ -8,7 +8,14 @@ export default function UpdatePassword() {
     const navigate = useNavigate();
 
     async function updatePassword() {
-        await supabase.auth.updateUser({ password: password });
+        const { error } = await supabase.auth.updateUser({ password: password });
+
+        if (error) {
+            alert("Error updating password: " + error.message);
+            return;
+        }
+
+        alert("Password updated successfully!");
         navigate("/login");
     }
 

@@ -28,6 +28,7 @@ export default function SignUp({onSignUpSuccess}) {
     }
 }
 
+  // input validation is provided in Supabase settings for email and password
   return (
     <form className="signup-form"
     onSubmit={async (e) => {

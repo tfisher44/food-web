@@ -37,13 +37,13 @@ function CalendarComponent() {
   return (
     
     
-    <div id = "containerCal">
+    <div id="containerCal">
       <div id="cal-button" style={{display: "flex", justifyContent: "center", gap: "10px",  marginTop: "10px", flexWrap: "wrap"}}>
-       <button class = "cal-button" style={{display: "none"}} id="showEvents"onClick={handleEventsCurr}>Show Events Calendar</button>
-       <button class = "cal-button" style={{display: "inline-block"}} id="showMarkets"onClick={handleMarketsCurr}>Show Farmer Markets Calendar</button>
+       <button className= "cal-button" style={{display: "none"}} id="showEvents"onClick={handleEventsCurr}>Show Events Calendar</button>
+       <button className= "cal-button" style={{display: "inline-block"}} id="showMarkets"onClick={handleMarketsCurr}>Show Farmer Markets Calendar</button>
        
-       <button class = "cal-button" style={{display: "inline-block"}} id="showEventsForm"onClick={handleClickForms}>Add New Events and Workshops To The Calendar</button>
-       <button class = "cal-button" style={{ display: "none"}} id="showMarketsForm"onClick={handleClickForms}>Add New Farmer Market To The Calendar</button>    
+       <button className= "cal-button" style={{display: "inline-block"}} id="showEventsForm"onClick={handleClickForms}>Add New Events and Workshops To The Calendar</button>
+       <button className= "cal-button" style={{ display: "none"}} id="showMarketsForm"onClick={handleClickForms}>Add New Farmer Market To The Calendar</button>    
       </div> 
 
       <h1></h1>

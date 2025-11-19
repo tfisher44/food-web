@@ -24,17 +24,19 @@ export default function SignIn() {
 
     const { data: siteManager, error: siteManagerError } = await supabase.from("site_managers").select("user_id").eq("user_id", userID).single();
 
-    if (siteManagerError) {
-      console.log("Error fetching site manager data", error);
-    }
-
-    if(siteManager) {
-      navigate("/site-manager-page");
+    if (!siteManagerError) {
+      if(siteManager) {
+          navigate("/site-manager-page");
+        } else {
+          navigate("/community-member-page");
+        }
     } else {
-      navigate("/community-member-page");
+        console.log("Error fetching site manager data", error);
+        alert("Error checking permissions");
     }
   }
 
+  // input validation is provided in Supabase settings for email and password
   return (
       <form className="signin-form"
       onSubmit={async (e) => {

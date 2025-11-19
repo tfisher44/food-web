@@ -1,8 +1,8 @@
-.containerCal {
- width: 100%; 
-height: 100%; 
+#containerCal {
+    width: 100%; 
+    height: 100%;
+    margin-bottom: 50px;
 }
-
 
 .cal-button {
     border: 0;

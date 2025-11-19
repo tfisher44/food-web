@@ -53,7 +53,7 @@ function HomePage(){
                     <div class="mission-section">
                         <h2 class="mission-title">Our Mission</h2>
                         <p class="mission-description">
-                            Our mission is to increase access to locally grown fresh produce, inspire community engagement, support local growers, and facilitate collaboration in the food system. We aim to make it easy to find community gardens, start new ones, and connect with volunteers. We strive to bridge the gap between growers and consumers by enabling site managers to make their information and produce visible to the community on a centralized map.
+                            Our mission is to increase access to locally grown fresh produce, inspire community engagement, support local growers, and facilitate visibility and collaboration in the food system. We aim to make it easy to find community gardens, start new ones, and connect with volunteers. We strive to bridge the gap between growers and consumers by enabling site managers to make their information and produce visible to the community on a centralized map.
                         </p>
                     </div>
 

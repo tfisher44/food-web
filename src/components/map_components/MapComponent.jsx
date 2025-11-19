@@ -80,7 +80,7 @@ function MapComponent(){
             configureArcGISSearch();
             addLegendToLayerList();
         }
-    }, [layers]);
+    }, [layers, arcgisAPI]);
 
     return (
         <div style={{ height: "61vh", width: "100%" }}>
