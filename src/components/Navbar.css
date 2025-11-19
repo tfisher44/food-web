@@ -3,7 +3,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1px 80px;
+    padding: 1px;
     background-color: #12451d;
     color: white;
     position: fixed;
@@ -16,19 +16,17 @@ nav {
 .navbar {
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .navbar li {
     list-style: none;
-    padding: 0 25px;
+    padding: 0 35px;
     position: relative;
 }
 
-ul {
+.navbar ul {
     display: flex;
-    padding: 5;
+    padding: 0px;
     margin: 0;
 }
 
@@ -46,8 +44,6 @@ ul {
     position: relative;
     text-decoration: none;
     color: white;
-    /* padding-left: 25px;
-    padding-right: 25px; */
     padding-top: 15px;
     padding-bottom: 15px;
     display: block;

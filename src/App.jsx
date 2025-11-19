@@ -44,8 +44,8 @@ function App() {
         <Route path="/map-page" element={<MapPage />} />
         <Route path="/about-page" element={<AboutPage/>}/>
         <Route path="/calendar-page" element={<CalendarPage />} />
-        <Route path="/projects-page" element={<ProjectsPage />} />
-        <Route path="/educate-page" element={<EducatePage />} />
+        {/* <Route path="/projects-page" element={<ProjectsPage />} />
+        <Route path="/educate-page" element={<EducatePage />} /> */}
         {/* auth pages: */}
         <Route path="/login" element={<AuthPage />} />
         <Route path="/reset-email-password" element={<ResetEmailPassword />} />
