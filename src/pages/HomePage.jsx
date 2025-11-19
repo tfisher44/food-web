@@ -1,7 +1,7 @@
 // import components
 import HeroSection from "../components/HeroSection"
 import './HomePage.css';
-import Gallery from "../components/home_components/gallery";
+import Gallery from "../components/home_components/Gallery";
 
 function HomePage(){
     return (
