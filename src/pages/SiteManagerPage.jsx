@@ -1,11 +1,13 @@
 import { supabase } from "../supabaseClient"
 import { useState, useEffect } from "react"
+import { useAuth } from "../contexts/AuthContext"
 import "./SiteManagerPage.css"
 import ProduceEditor from "../components/sitemanager_components/ProduceEditor"
 import SiteProfileEditor from "../components/sitemanager_components/SiteProfileEditor"
 import SitePermissionsPopup from "../components/sitemanager_components/SitePermissionsPopup"
 
-function SiteManagerPage({session}) {
+function SiteManagerPage() {
+    const { session } = useAuth();
     const [siteName, setSiteName] = useState("");
     const [siteID, setSiteID] = useState(null);
     const dispalyName = session.user.user_metadata.display_name;

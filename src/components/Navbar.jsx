@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import "./Navbar.css"
 import ProfileMenu from "./ProfileMenu";
 
-function Navbar({session}){
+function Navbar(){
     return (
         <nav className="navbar">
             {/* <h3 className="food-web-logo">Put Logo Here</h3> */}
@@ -17,7 +17,7 @@ function Navbar({session}){
             </ul>
 
             <div className="profile">
-                <ProfileMenu session={session}/>
+                <ProfileMenu />
             </div>
         </nav>
     );

@@ -1,7 +1,8 @@
-import { supabase } from "../supabaseClient"
 import "./CommunityMemberPage.css"
+import { useAuth } from "../contexts/AuthContext"
 
-function CommunityMemberPage({session}) {
+function CommunityMemberPage() {
+    const { session } = useAuth();
 
     const dispalyName = session.user.user_metadata.display_name;
 

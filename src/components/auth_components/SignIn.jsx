@@ -24,15 +24,10 @@ export default function SignIn() {
 
     const { data: siteManager, error: siteManagerError } = await supabase.from("site_managers").select("user_id").eq("user_id", userID).single();
 
-    if (!siteManagerError) {
-      if(siteManager) {
-          navigate("/site-manager-page");
-        } else {
-          navigate("/community-member-page");
-        }
-    } else {
-        console.log("Error fetching site manager data", error);
-        alert("Error checking permissions");
+    if(!siteManager || siteManagerError) {
+        navigate("/community-member-page");
+    } else if (siteManager) {
+        navigate("/site-manager-page");
     }
   }
 

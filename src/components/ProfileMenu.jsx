@@ -1,9 +1,11 @@
 import "./ProfileMenu.css"
 import { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from "react-router-dom";
-import { supabase } from "../supabaseClient";
+import { useNavigate, useLocation } from "react-router-dom"
+import { supabase } from "../supabaseClient"
+import { useAuth } from "../contexts/AuthContext"
 
-function ProfileMenu({session}) {
+function ProfileMenu() {
+    const { session } = useAuth();
     const [menuOpen, setMenuOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -25,14 +27,10 @@ function ProfileMenu({session}) {
 
             const { data: siteManager, error: siteManagerError } = await supabase.from("site_managers").select("user_id").eq("user_id", userID).single();
 
-            if(siteManager) {
-            navigate("/site-manager-page");
-            } else {
-            navigate("/community-member-page");
-            }
-
-            if (siteManagerError) {
-                console.log("Error checking site_managers", siteManagerError)
+            if(!siteManager || siteManagerError) {
+                navigate("/community-member-page");
+            } else if (siteManager) {
+                navigate("/site-manager-page");
             }
         }
     }

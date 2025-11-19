@@ -1,15 +1,13 @@
 import Navbar from "./Navbar"
 
-function AppLayout({ children, session }){
+function AppLayout({ children }){
     return (
         <>
             <header>
-                <Navbar session={session}/>
+                <Navbar />
             </header>
 
             <main>{children}</main>
-
-            {/* <footer>Food Web Footer</footer> */}
         </>
     );
 }

@@ -1,9 +1,11 @@
 // wrapper for page routes that only site managers should have access to
-import { Navigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { supabase } from "../../supabaseClient";
+import { Navigate } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { supabase } from "../../supabaseClient"
+import { useAuth } from "../../contexts/AuthContext"
 
-function SMProtectedRoute({ session, children }) {
+function SMProtectedRoute({ children }) {
+    const { session } = useAuth();
     const [siteManager, setSiteManager] = useState(null);
 
     useEffect(() => {
