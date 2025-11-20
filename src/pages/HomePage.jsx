@@ -34,10 +34,10 @@ function HomePage(){
                     <span>Attend Events & Workshops</span>
                   </a>
 
-                  <a href="/educate-page" class="styled-button" style={{ textDecoration: 'none' }}>
+                  {/* <a href="/educate-page" class="styled-button" style={{ textDecoration: 'none' }}>
                     <img src="assets\icons\Home_Page_Icons\produce-icon.svg" alt="Education icon" class="button-icon"></img>
-                    <span>Learn About Sustainable Gardening</span>
-                  </a>
+                    <span>Learn About Sustainable Farming</span>
+                  </a> */}
                   <a href="https://join.slack.com/t/food-web/shared_invite/zt-3ehkiaxvb-VciMeoyII1ErkxytcFHoPw"
                     class="slack-button" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                     <img src="assets\icons\Home_Page_Icons\slack-new-logo.svg" alt="Slack icon" class="button-icon"></img>

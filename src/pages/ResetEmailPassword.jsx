@@ -7,7 +7,7 @@ export default function ResetEmailPassword(){
 
     async function resetPassword() {
         const {error} = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: 'http://localhost:5173/change-password', // TODO: change this to the current domain name and move to environment variables in Netlify
+            redirectTo: 'https://foodweb.community/change-password',
         });
 
         if (error) {
