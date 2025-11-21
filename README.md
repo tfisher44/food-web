@@ -28,7 +28,7 @@ This repository contains the ongoing migration of the original Food Web website 
 ## Future Plans
 - Add more site data for the map.
 - Optimize the website for mobile view.
-- Projects page: A page for showcasing projects to facilitate learning and collaboration (ex: the irrigation project at Encounter Farm).
-- Educate page: A page for educational resources about sustainable farming, including community contribution.
-- Regional communication: Location-based messaging groups for growers, volunteers, and community members. (ex: people who want to start a community garden can find others in their area who would want to help)
-- A corresponding mobile app.
+- Implement the Projects page to showcase projects for learning and collaboration (e.g., the irrigation project at Encounter Farm).
+- Implement the Educate page to provide educational resources about sustainable farming, with ability for community contribution.
+- Implement regional communication features, such as location-based messaging groups for growers, volunteers, and community members (e.g., helping people find and collaborate with others interested in starting a community garden).
+- Develop a corresponding mobile app.
