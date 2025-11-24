@@ -52,19 +52,3 @@
     height: 100%;
     object-fit: contain;
 }
-
-/* Custom wrapper classes for different positions of the search bar on the map*/
-
-.search-bar-site-name-wrapper {
-    position: absolute;
-    top: 14px;
-    left: 57px;
-    z-index: 10;
-}
-
-.search-bar-produce-wrapper {
-    position: absolute;
-    top: 14px;
-    left: 265px;
-    z-index: 10;
-}

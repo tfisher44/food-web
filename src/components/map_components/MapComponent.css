@@ -1,0 +1,33 @@
+.search-bar-produce-wrapper {
+    position: absolute;
+    top: 14px;
+    left: 265px;
+    z-index: 10;
+}
+
+.map-buttons-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    bottom: 30px;
+    right: 15px;
+    z-index: 10;
+}
+
+.site-button {
+    color: #000000;
+    padding: 5px 5px 5px 5px;
+    width: 120px;
+    height: 45px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-site-btn {
+    background-color: rgba(160, 208, 223, 0.9);
+}
+
+#remove-site-btn {
+    background-color: rgba(226, 158, 156, 0.9);
+}

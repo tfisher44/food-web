@@ -1,19 +1,20 @@
 // import arcgis modules:
-import "@arcgis/map-components/components/arcgis-map";
-import "@arcgis/map-components/components/arcgis-zoom";
-import "@arcgis/map-components/components/arcgis-locate";
-import "@arcgis/map-components/components/arcgis-layer-list";
-import "@arcgis/map-components/components/arcgis-home";
-import "@arcgis/map-components/components/arcgis-fullscreen";
-import "@arcgis/map-components/components/arcgis-search";
-import "@arcgis/map-components/components/arcgis-legend";
-import "@arcgis/core/assets/esri/themes/light/main.css";
-import esriConfig from "@arcgis/core/config";
+import "@arcgis/map-components/components/arcgis-map"
+import "@arcgis/map-components/components/arcgis-zoom"
+import "@arcgis/map-components/components/arcgis-locate"
+import "@arcgis/map-components/components/arcgis-layer-list"
+import "@arcgis/map-components/components/arcgis-home"
+import "@arcgis/map-components/components/arcgis-fullscreen"
+import "@arcgis/map-components/components/arcgis-search"
+import "@arcgis/map-components/components/arcgis-legend"
+import "@arcgis/core/assets/esri/themes/light/main.css"
+import esriConfig from "@arcgis/core/config"
 // imports from react:
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 //import custom components and helper functions:
-import { populateAllLayers, addLayersToMap, searchByProduce, clearProduceResults } from "./map_functions";
-import MapSearchBar from "./MapSearchBar";
+import { populateAllLayers, addLayersToMap, searchByProduce, clearProduceResults } from "./map_functions"
+import MapSearchBar from "./MapSearchBar"
+import "./MapComponent.css"
 
 function MapComponent(){
     // ArcGIS API Key: update the .env with a new key before expiration
@@ -108,6 +109,19 @@ function MapComponent(){
                         submitBtnIcon={"/assets/icons/Map_Page_Icons/apple-search.png"}
                         clearFunction={() => clearProduceResults(layers)}
                     />
+                </div>
+
+                <div className="map-buttons-wrapper">
+                    <button
+                        className="site-button" id="add-site-btn"
+                        onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfAeA8WzHOEPZ-Wi04f8yTwhQoeJuPxn7m9euEdPLvV0L_rrg/viewform?usp=header', "_blank")}>
+                        Add a New Site
+                    </button>
+                    <button
+                        className="site-button" id="remove-site-btn"
+                        onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLScGjlvn5xiSvJo_XChdjwH0pqtT0Ny0ypDN3zIn49xBwKQr7A/viewform?usp=header', "_blank")}>
+                        Report an Inactive Site
+                    </button>
                 </div>
             </arcgis-map>
         </div>
