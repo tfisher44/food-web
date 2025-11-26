@@ -34,10 +34,10 @@ function HomePage(){
                     <span>Attend Events & Workshops</span>
                   </a>
 
-                  <a href="/educate-page" class="styled-button" style={{ textDecoration: 'none' }}>
+                  {/* <a href="/educate-page" class="styled-button" style={{ textDecoration: 'none' }}>
                     <img src="assets\icons\Home_Page_Icons\produce-icon.svg" alt="Education icon" class="button-icon"></img>
                     <span>Learn About Sustainable Gardening</span>
-                  </a>
+                  </a> */}
                   <a href="https://join.slack.com/t/food-web/shared_invite/zt-3ehkiaxvb-VciMeoyII1ErkxytcFHoPw"
                     class="slack-button" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                     <img src="assets\icons\Home_Page_Icons\slack-new-logo.svg" alt="Slack icon" class="button-icon"></img>
@@ -51,7 +51,7 @@ function HomePage(){
                 <div class="mission-vision">
                     {/* Mission Section */}
                     <div class="mission-section">
-                        <h2 class="mission-title">Our Mission</h2>
+                        <h2 class="mission-title">Mission</h2>
                         <p class="mission-description">
                             Our mission is to increase access to locally grown fresh produce, inspire community engagement, support local growers, and facilitate visibility and collaboration in the food system. We aim to make it easy to find community gardens, start new ones, and connect with volunteers. We strive to bridge the gap between growers and consumers by enabling site managers to make their information and produce visible to the community on a centralized map.
                         </p>
@@ -59,7 +59,7 @@ function HomePage(){
 
                     {/* Our Vision Section */}
                     <div class="vision-section">
-                        <h2 class="vision-title">Our Vision</h2>
+                        <h2 class="vision-title">Vision</h2>
                         <p class="vision-description">
                             We envision a world where you can walk a few minutes from your home and gather a basket of fresh fruit and vegetables from your neighborhood garden, instead of a bag of chips from the corner store. Urban areas across the United States are filled with green growing spaces and local farms that have been integrated into urban planning or transformed from vacant lots, helping to create a network of diverse sources of fresh food. Excess produce makes it to food banks and nearby residents before going to waste, helping to combat food insecurity. There are plenty of opportunities to get involved and the food system is resilient because everyone has a unique and vital hand in it.
                         </p>
