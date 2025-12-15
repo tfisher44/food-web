@@ -13,3 +13,25 @@
     font-size: 18px;
     margin-bottom: 60px;
 }
+
+#CP-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#CP-section img {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+#CP-section p {
+    width: 50%;
+    font-size: 16px;
+}
