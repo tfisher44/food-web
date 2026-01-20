@@ -8,7 +8,7 @@ This repository contains the ongoing migration of the original Food Web website 
 - Interactive map of community gardens, local farms, farmers markets, food banks, and compost collection sites (currently the sites are based in Arizona but we plan to expand to other states in the future)
 - Site profiles including site name, address, website, contact information, description, hours, and produce
 - Search by site name, address, or current location
-- Filter community gardens and farms by produce (allowing community gardens like Encounter Farm to share excess produce, or local farms to advertise their available produce)
+- Filter community gardens and farms by produce (allowing community gardens like Encounter Farm to share excess produce)
 - User authentication
 - Site information management features for authenticated site managers
 - 2 calendars, one for farmers markets and one for workshops & events
