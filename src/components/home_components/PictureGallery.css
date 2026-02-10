@@ -1,11 +1,14 @@
+
+
+
 /* Gallery section margins */
-.gallery-section {
+/* .gallery-section {
     max-width: 90%;
-    margin: 4rem auto;
+    margin: 4rem auto; */
     /* Reduced from 2rem */
-    padding: 2rem 2rem;
+    /* padding: 2rem 2rem; */
     /* Reduced from 2rem */
-}
+/* }
 
 .gallery-section {
     max-width: 100%;
@@ -23,9 +26,9 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; */
     /* Add space above the buttons/dots */
-}
+/* }
 
 .gallery-track {
     position: relative;
@@ -37,9 +40,9 @@
 .gallery-slide {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 100%; */
     /* opacity: 0; */
-    transition: opacity 0.5s ease-in-out;
+    /* transition: opacity 0.5s ease-in-out;
     cursor: pointer;
 }
 
@@ -55,9 +58,9 @@
 }
 
 .gallery-btn {
-    background: #d2e8c9;
+    background: #d2e8c9; */
     /* Match your theme green color */
-    color: rgba(18, 69, 29, 0.9);
+    /* color: rgba(18, 69, 29, 0.9);
     border: none;
     width: 32px;
     height: 32px;
@@ -83,28 +86,28 @@
 }
 
 .dot {
-    width: 8px;
+    width: 8px; */
     /* Smaller dots */
-    height: 8px;
+    /* height: 8px; */
     /* Smaller dots */
-    border-radius: 50%;
-    background: rgba(18, 69, 29, 0.3);
+    /* border-radius: 50%; */
+    /* background: rgba(18, 69, 29, 0.3); */
     /* Lighter version of your theme green */
-    cursor: pointer;
+    /* cursor: pointer;
 }
 
 .dot.active {
-    background: rgba(18, 69, 29, 0.9);
+    background: rgba(18, 69, 29, 0.9); */
     /* Darker when active */
-}
+/* } */
 
 /* Container for buttons and dots together */
-.gallery-controls {
+/* .gallery-controls {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem 0;
-}
+} */
 
 /* Modal styles */
 /* .modal {
