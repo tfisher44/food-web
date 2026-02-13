@@ -8,6 +8,7 @@ function AboutPage(){
             <HeroSection 
                title="About Us"
                image="/assets/pictures/HomePageImage.webp"
+               height="45vh"
             />
             <div id="our-story">
                 <h1>Our Story</h1>

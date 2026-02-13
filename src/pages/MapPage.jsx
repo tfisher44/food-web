@@ -9,9 +9,10 @@ function MapPage(){
             <HeroSection
                 title="Explore Your Local Food System"
                 image="/assets/pictures/MapPageImage.webp"
+                height="95vh"
             />
 
-            <div className="map-container" style={{ position: "relative", width: "100%", height: "61vh" }}>
+            <div className="map-container" style={{ position: "relative", width: "100%", height: "90vh" }}>
                 <MapComponent />
             </div>
         </>

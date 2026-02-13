@@ -3,10 +3,10 @@ import CalendarComponent from "../components/calendar_components/CalendarCompone
 function CalendarPage(){
     return (
         <>
-            <HeroSection
+            {/* <HeroSection
                 title="Discover Events, Workshops, and Farmers Markets"
                 image="/assets/pictures/MapPageImage.webp"
-            />
+            /> */}
             <CalendarComponent/>
             
         </>

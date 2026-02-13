@@ -9,6 +9,7 @@ function HomePage(){
             <HeroSection 
                title="Food Web"
                image="/assets/pictures/HomePageImage.webp"
+               height="95vh"
             />
 
             {/* What's Food Web and Buttons Area */}

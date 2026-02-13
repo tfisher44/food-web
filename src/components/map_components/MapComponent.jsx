@@ -84,12 +84,12 @@ function MapComponent(){
     }, [layers, arcgisAPI]);
 
     return (
-        <div style={{ height: "61vh", width: "100%" }}>
+        <div style={{ height: "100%", width: "100%" }}>
             <arcgis-map
                 basemap="streets-navigation-vector"
-                zoom="8"
-                center={[-112.000000, 33.380000]}
-                style={{ height: "61vh", width: "100%" }}
+                zoom="6"
+                center={[-112.000000, 34.40000]}
+                style={{ height: "100%", width: "100%" }}
                 onarcgisViewReadyChange={handleViewReady}
             >
                 <arcgis-search
