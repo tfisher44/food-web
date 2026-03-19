@@ -69,7 +69,7 @@ function MapComponent(){
             if (item.layer.type != "group") {
                 item.panel = {
                     content: "legend",
-                    open: false,
+                    open: true,
                 };
             }
         };

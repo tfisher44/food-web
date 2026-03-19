@@ -63,8 +63,8 @@ async function populateLayer(siteType, icon, layerName) {
                 symbol: {
                     type: "picture-marker",
                     url: icon,
-                    width: "28px",
-                    height: "28px"
+                    width: "30px",
+                    height: "30px"
                 }
             },
             popupTemplate: {
@@ -95,22 +95,22 @@ const SITE_LAYERS = {
     FARMS: {
         layerName: "Local Farms",
         siteType: "farm",
-        icon: "/assets/icons/Map_Page_Icons/carrot.png"
+        icon: "/assets/icons/Map_Page_Icons/Barn.png"
     },
     FARMERS_MARKETS: {
         layerName: "Farmers Markets",
         siteType: "farmers_market",
-        icon: "/assets/icons/Map_Page_Icons/strawberry.png"
+        icon: "/assets/icons/Map_Page_Icons/strawberry_basket3.png"
     },
     FOOD_BANKS: {
         layerName: "Food Banks",
         siteType: "food_bank",
-        icon: "/assets/icons/Map_Page_Icons/grapes.png"
+        icon: "/assets/icons/Map_Page_Icons/bean_can2.png"
     },
     COMPOST_SITES: {
         layerName: "Compost Collection Sites",
         siteType: "compost",
-        icon: "/assets/icons/Map_Page_Icons/shovel.png"
+        icon: "/assets/icons/Map_Page_Icons/Shovel2.png"
     }
 };
 
