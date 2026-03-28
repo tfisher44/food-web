@@ -12,15 +12,18 @@ function createGraphic(site){
         latitude: site.latitude
     }
 
+    const date = new Date(site.last_updated)
+
     const siteAttributes = {
-        ObjectID: site.id,
-        Name: site.name,
-        Address: site.address,
-        Website: site.website,
-        Hours: site.hours,
-        Contact: site.contact,
-        Description: site.description,
-        Produce: site.produce    
+        objectID: site.id,
+        name: site.name,
+        address: site.address,
+        website: site.website,
+        hours: site.hours,
+        contact: site.contact,
+        description: site.description,
+        produce: site.produce,
+        last_updated: date.toLocaleDateString()    
     }
 
     return new Graphic({
@@ -48,14 +51,15 @@ async function populateLayer(siteType, icon, layerName) {
             title: layerName,
             objectIdField: "ObjectID",
             fields: [
-                {name: "ObjectID", type: "oid"},
+                {name: "objectID", type: "oid"},
                 {name: "name", type: "string"},
                 {name: "address", type: "string"},
                 {name: "website", type: "string"},
                 {name: "hours", type: "string"},
                 {name: "contact", type: "string"},
                 {name: "description", type: "string"},
-                {name: "produce", type: "string"}
+                {name: "produce", type: "string"},
+                {name: "last_updated", type: "string"}
             ],
             source: graphics,
             renderer: {
@@ -70,12 +74,13 @@ async function populateLayer(siteType, icon, layerName) {
             popupTemplate: {
                 title: "{Name}",
                 content: `
-                    <b>Address:</b> {address}<br><br>
                     <a href={website} target=_blank><b>Visit Website</b></a><br><br>
-                    <b>Contact:</b> {contact}<br><br>
-                    <b>Hours:<br></b>{hours}<br><br>
                     <b>Description:</b> {description}<br><br>
-                    <b>Available Produce:</b><br> {produce}
+                    <b>Available Produce:</b><br> {produce}<br><br>
+                    <b>Address:</b> {address}<br><br>
+                    <b>Hours: </b>{hours}<br><br>
+                    <b>Contact:</b> {contact}<br><br>
+                    <b>Profile Last Updated: </b>{last_updated}
                     `
             }
         })

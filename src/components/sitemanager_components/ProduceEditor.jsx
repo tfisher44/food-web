@@ -25,12 +25,17 @@ export default function ProduceEditor({onClose, siteID}){
     async function updateProduce(e) {
         e.preventDefault();
 
-        const {error} = await supabase.from("all_sites").update({produce}).eq("id", siteID);
+        // update the last_updated date to the current date
+        const current_date = new Date().toISOString();
+
+        // update the produce in the databse
+        const {error} = await supabase.from("all_sites").update({produce: produce, last_updated: current_date}).eq("id", siteID);
 
         if (error) {
             console.log("error updating produce", error.message);
             alert("Produce NOT updated successfully", error);
-        } else {
+        } 
+        else {
             alert("Produce updated successfully!");
         }
     }

@@ -32,12 +32,18 @@ export default function SiteProfileEditor({onClose, siteID}) {
     async function updateSiteProfile(e) {
         e.preventDefault();
 
-        const {error} = await supabase.from("all_sites").update({name, address, website, contact, hours, description}).eq("id", siteID);
+        // update the last_updated date to the current date
+        const current_date = new Date().toISOString();
+
+        // update site info in the database
+        const {error} = await supabase.from("all_sites").update(
+            {name: name, address: address, website: website, contact: contact, hours: hours, description: description, last_updated: current_date}).eq("id", siteID);
 
         if (error) {
             console.log("error updating site data", error.message);
             alert("Site info NOT updated successfully", error);
-        } else {
+        } 
+        else {
             alert("Site profile updated successfully!");
         }
     }
