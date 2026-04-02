@@ -1,6 +1,6 @@
 import Graphic from "@arcgis/core/Graphic.js";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer.js";
-import { supabase } from "../../supabaseClient";
+import { supabase } from "../supabaseClient";
 
 // Functions to populate the map:
 

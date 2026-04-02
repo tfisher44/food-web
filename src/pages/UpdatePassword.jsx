@@ -1,29 +1,30 @@
-import { useState } from "react";
-import { supabase } from "../supabaseClient";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import "./UpdatePassword.css"
+import { updatePassword } from "../services/authService"
 
 export default function UpdatePassword() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    async function updatePassword() {
-        const { error } = await supabase.auth.updateUser({ password: password });
-
-        if (error) {
-            alert("Error updating password: " + error.message);
-            return;
+    async function updateUserPassword() {
+        try {
+            // update the password
+            await updatePassword(password);
+            // if successful, navigate to the login page
+            alert("Password updated successfully!");
+            navigate("/login");
+        } catch(error) {
+            alert("Error updating password: ");
+            console.log("Error updating password: ", error);
         }
-
-        alert("Password updated successfully!");
-        navigate("/login");
     }
 
     return (
         <form className="update-password-form"
       onSubmit={async (e) => {
           e.preventDefault();
-          await updatePassword();
+          await updateUserPassword();
       }}>
           <h2>Enter your new password</h2>
           

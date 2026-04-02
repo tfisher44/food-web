@@ -12,7 +12,7 @@ import esriConfig from "@arcgis/core/config"
 // imports from react:
 import { useEffect, useState } from "react"
 //import custom components and helper functions:
-import { populateAllLayers, addLayersToMap, searchByProduce, clearProduceResults } from "./map_functions"
+import { populateAllLayers, addLayersToMap, searchByProduce, clearProduceResults } from "../../services/mapService"
 import MapSearchBar from "./MapSearchBar"
 import "./MapComponent.css"
 

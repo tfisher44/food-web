@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabase } from "../../supabaseClient";
+import { signUpNewUser } from "../../services/authService"
 import "./SignUp.css"
 
 export default function SignUp({onSignUpSuccess}) {
@@ -7,33 +7,22 @@ export default function SignUp({onSignUpSuccess}) {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
-  async function signUpNewUser() {
-    const { data, error } = await supabase.auth.signUp({
-        email: email,
-        password: password,
-        options: {
-          data: {
-            display_name: name,
-          },
-        },
-    });
-
-    if (error) {
-        alert(error.message);
-    } else {
-        if (onSignUpSuccess) {
-          onSignUpSucess();
-          alert("Please check your email & follow link to finish account registration")
-        };
+  async function handleSignUp() {
+    try {
+      await signUpNewUser(email, password, name);
+      alert("Please check your email & follow link to finish account registration");
+      onSignUpSuccess?.();
+    } catch (error) {
+      alert(error.message);
     }
-}
+  }
 
   // input validation is provided in Supabase settings for email and password
   return (
     <form className="signup-form"
     onSubmit={async (e) => {
         e.preventDefault();
-        await signUpNewUser();
+        await handleSignUp();
     }}>
         <h2>Create a new account</h2>
 

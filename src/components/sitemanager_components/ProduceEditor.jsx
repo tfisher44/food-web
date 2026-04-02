@@ -1,6 +1,6 @@
-import { supabase } from "../../supabaseClient"
-import { useState, useEffect } from "react"
 import "./ProduceEditor.css"
+import { useState, useEffect } from "react"
+import { getCurrentProduce, updateProduceData } from "../../services/siteManagementService"
 
 // in the future if produce feature is widely used, switch to a relational produce table with separate fields for name, cost, qualtity, etc.
 // and change produce form to have separate inputs for each field
@@ -9,34 +9,27 @@ export default function ProduceEditor({onClose, siteID}){
     const [produce, setProduce] = useState("");
 
     useEffect(() => {
-        async function getCurrentProduce() {
-            const {data, error} = await supabase.from("all_sites").select("produce").eq("id", siteID);
-            console.log("produce", data);
-
-            if (error) {
-                console.log("error getting produce data", error);
-            } else {
-                setProduce(data?.[0]?.produce || "");
+        async function setCurrentProduce() {
+            try {
+                const currentProduce = await getCurrentProduce(siteID);
+                setProduce(currentProduce || "");
+            } catch (error){
+                console.log("Error getting produce data: ", error);
+                alert("Error getting produce data");
             }
         }
-        getCurrentProduce();
+        setCurrentProduce();
     }, [siteID])
 
     async function updateProduce(e) {
         e.preventDefault();
 
-        // update the last_updated date to the current date
-        const current_date = new Date().toISOString();
-
-        // update the produce in the databse
-        const {error} = await supabase.from("all_sites").update({produce: produce, last_updated: current_date}).eq("id", siteID);
-
-        if (error) {
-            console.log("error updating produce", error.message);
-            alert("Produce NOT updated successfully", error);
-        } 
-        else {
+        try {
+            await updateProduceData(siteID, produce);
             alert("Produce updated successfully!");
+        } catch (error){
+            console.log("Error updating produce data: ", error);
+            alert("Produce NOT updated successfully");
         }
     }
 

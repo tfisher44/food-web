@@ -1,28 +1,26 @@
-import { useState } from "react";
-import { supabase } from "../supabaseClient";
 import "./ResetEmailPassword.css"
+import { useState } from "react";
+import { resetPassword } from "../services/authService"
 
 export default function ResetEmailPassword(){
     const [email, setEmail] = useState("");
 
-    async function resetPassword() {
-        const {error} = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: 'http://foodweb.community/change-password', 
-        });
-
-        if (error) {
-            alert("Error sending reset password email: " + error.message);
-            return;
+    async function resetPasswordFromEmail() {
+        try{
+            // call resetPassword and alert the user to check their email to complete the process
+            await resetPassword(email);
+            alert("Please check your email");
+        } catch(error) {
+            console.log("Error sending reset password email: ", error);
+            alert("Error sending reset password email");
         }
-
-        alert("Please check your email");
     }
 
     return (
         <form className="reset-email-password-form"
       onSubmit={async (e) => {
           e.preventDefault();
-          await resetPassword();
+          await resetPasswordFromEmail();
       }}>
           <h2>Enter your Email</h2>
           

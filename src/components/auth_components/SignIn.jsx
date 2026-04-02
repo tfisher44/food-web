@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabase } from "../../supabaseClient"
+import { signInWithEmail, checkSiteManager } from "../../services/authService"
 import { useNavigate } from "react-router-dom"
 import "./SignIn.css"
 
@@ -8,26 +8,13 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  async function signInWithEmail() {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
-    });
-
-    if (error || !data.user) {
-      alert(error?.message || "Login failed");
-      return;
-    }
-
-    // check if user id in site_managers table, then redirect to correct user page
-    const userID = data.user.id;
-
-    const { data: siteManager, error: siteManagerError } = await supabase.from("site_managers").select("user_id").eq("user_id", userID).single();
-
-    if(!siteManager || siteManagerError) {
-        navigate("/community-member-page");
-    } else if (siteManager) {
-        navigate("/site-manager-page");
+  async function handleSignIn() {
+    try {
+      const user = await signInWithEmail(email, password);
+      const isSiteManager = await checkSiteManager(user.id);
+      navigate(isSiteManager ? "/site-manager-page" : "/community-member-page");
+    } catch (error) {
+      alert(error.message);
     }
   }
 
@@ -36,7 +23,7 @@ export default function SignIn() {
       <form className="signin-form"
       onSubmit={async (e) => {
           e.preventDefault();
-          await signInWithEmail();
+          await handleSignIn();
       }}>
           <h2>Login to your account</h2>
           

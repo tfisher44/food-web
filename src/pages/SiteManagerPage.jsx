@@ -1,41 +1,40 @@
-import { supabase } from "../supabaseClient"
 import { useState, useEffect } from "react"
 import { useAuth } from "../contexts/AuthContext"
 import "./SiteManagerPage.css"
 import ProduceEditor from "../components/sitemanager_components/ProduceEditor"
 import SiteProfileEditor from "../components/sitemanager_components/SiteProfileEditor"
 import SitePermissionsPopup from "../components/sitemanager_components/SitePermissionsPopup"
+import { getSiteIDFromUser, getSiteData} from "../services/siteManagementService"
 
-function SiteManagerPage() {
+export default function SiteManagerPage() {
     const { session } = useAuth();
     const [siteName, setSiteName] = useState("");
     const [siteID, setSiteID] = useState(null);
-    const dispalyName = session.user.user_metadata.display_name;
     const [showProduceEditor, setShowProduceEditor] = useState(false);
     const [showSiteProfileEditor, setShowSiteProfileEditor] = useState(false);
     const [showSitePermissionsPopup, setShowitePermissionsPopup] = useState(false);
 
+    const dispalyName = session.user.user_metadata.display_name;
+
     useEffect(() => {
-        async function get_site_data(){
-            const userID = session.user.id;
-            const { data: site, error: site_manager_error } = await supabase.from("site_managers").select('*').eq("user_id", userID);
+        async function get_site_info(){
+            try {
+                // get site ID associated with site manager user
+                const userID = session.user.id;
+                const site_ID = await getSiteIDFromUser(userID);
+            
+                // get site name from site id
+                const site_data = await getSiteData(site_ID);
 
-            if (site_manager_error) {
-                console.error("Error getting site manager data", site_manager_error);
+                // set the site id and site name
+                setSiteID(site_ID);
+                setSiteName(site_data.name);
+            } catch (error){
+                alert("Error getting site manager data", error);
+                console.log("Error loading site data:", error);
             }
-
-            setSiteID(site[0].site_id)
-            const site_id = site[0].site_id;
-            const { data: site_data, error: site_error } = await supabase.from("all_sites").select('*').eq("id", site_id);
-
-            if (site_error) {
-                console.error("Error getting site data", site_error);
-            }
-
-            setSiteName(site_data[0].name);
         }
-
-        get_site_data();
+        get_site_info();
     }, [session])
 
     return (
@@ -55,5 +54,3 @@ function SiteManagerPage() {
         </div>
     )
 }
-
-export default SiteManagerPage

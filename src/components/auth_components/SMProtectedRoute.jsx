@@ -1,8 +1,8 @@
 // wrapper for page routes that only site managers should have access to
 import { Navigate } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { supabase } from "../../supabaseClient"
 import { useAuth } from "../../contexts/AuthContext"
+import { checkSiteManager } from "../../services/authService"
 
 function SMProtectedRoute({ children }) {
     const { session } = useAuth();
@@ -10,21 +10,18 @@ function SMProtectedRoute({ children }) {
 
     useEffect(() => {
         async function checkRole() {
-            if(!session) {
-                setSiteManager(false);
-                return;
-            }
-            const userID = session.user.id;
-            const { data, error } = await supabase.from("site_managers").select("user_id").eq("user_id", userID).single();
-            
-            if (data && !error) {
-                setSiteManager(true);
-            }
-            else {
-                setSiteManager(false);
+            try {
+                if(!session) {
+                    setSiteManager(false);
+                    return;
+                }
+                // call the checkSiteManager from authService
+                const isSiteManager = await checkSiteManager(session.user.id);
+                setSiteManager(isSiteManager);
+            } catch (error){
+                console.log(error);
             }
         }
-
         checkRole();
     }, [session])
 

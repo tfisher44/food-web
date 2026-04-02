@@ -1,6 +1,6 @@
 import "./SiteProfileEditor.css"
-import { supabase } from "../../supabaseClient"
 import { useState, useEffect } from "react"
+import { getSiteData, updateSiteData } from "../../services/siteManagementService"
 
 export default function SiteProfileEditor({onClose, siteID}) {
     const [name, setName] = useState("");
@@ -11,40 +11,31 @@ export default function SiteProfileEditor({onClose, siteID}) {
     const [hours, setHours] = useState("");
 
     useEffect(() => {
-        async function getSiteProfileInfo() {
-            const {data, error} = await supabase.from("all_sites").select("*").eq("id", siteID);
-            console.log("error getting site data", data);
-
-            if (error) {
-                console.log("error getting site data", error);
-            } else {
-                setName(data?.[0]?.name || "");
-                setContact(data?.[0]?.contact || "");
-                setAddress(data?.[0]?.address || "");
-                setWebsite(data?.[0]?.website || "");
-                setDescription(data?.[0]?.description || "");
-                setHours(data?.[0]?.hours || "");
+        async function setCurrentSiteProfileInfo() {
+            try {
+                const site = await getSiteData(siteID);
+                setName(site?.name || "");
+                setContact(site?.contact || "");
+                setAddress(site?.address || "");
+                setWebsite(site?.website || "");
+                setDescription(site?.description || "");
+                setHours(site?.hours || "");
+            } catch(error) {
+                console.log(error);
             }
         }
-        getSiteProfileInfo();
+        setCurrentSiteProfileInfo();
     }, [siteID])
 
     async function updateSiteProfile(e) {
         e.preventDefault();
 
-        // update the last_updated date to the current date
-        const current_date = new Date().toISOString();
-
-        // update site info in the database
-        const {error} = await supabase.from("all_sites").update(
-            {name: name, address: address, website: website, contact: contact, hours: hours, description: description, last_updated: current_date}).eq("id", siteID);
-
-        if (error) {
-            console.log("error updating site data", error.message);
-            alert("Site info NOT updated successfully", error);
-        } 
-        else {
+        try {
+            await updateSiteData(siteID, name, contact, address, website, description, hours);
             alert("Site profile updated successfully!");
+        } catch (error) {
+            console.log("error updating site data: " + error.message);
+            alert("Site info NOT updated: " + error);
         }
     }
 
