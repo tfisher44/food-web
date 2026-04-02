@@ -22,7 +22,6 @@ export default function ProfileMenu() {
             navigate("/");
         } catch (error) {
             console.log("Error signing out: ", error);
-            alert("Error signing out");
         }
     }
 

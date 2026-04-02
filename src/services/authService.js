@@ -35,7 +35,7 @@ export async function signInWithEmail(email, password) {
 
 // check if user exists in the site_managers table
 export async function checkSiteManager(userID){
-    const { data: siteManager, error: error } = await supabase.from("site_managers").select("user_id").eq("user_id", userID).single();
+    const { data: siteManager, error: error } = await supabase.from("site_managers").select("user_id").eq("user_id", userID).maybeSingle();
 
     if (error) {
         throw new Error(error.message);
