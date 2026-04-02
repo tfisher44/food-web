@@ -51,7 +51,7 @@ async function populateLayer(siteType, icon, layerName) {
             title: layerName,
             objectIdField: "ObjectID",
             fields: [
-                {name: "objectID", type: "oid"},
+                {name: "ObjectID", type: "oid"},
                 {name: "name", type: "string"},
                 {name: "address", type: "string"},
                 {name: "website", type: "string"},
