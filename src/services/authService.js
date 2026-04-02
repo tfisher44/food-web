@@ -71,7 +71,7 @@ export async function resetPassword(email) {
 export async function signOut() {
     const { error } = await supabase.auth.signOut();
 
-    if (error) {
+    if (error && !error.message?.includes("session")) {
         throw new Error(error.message);
     }
 }
