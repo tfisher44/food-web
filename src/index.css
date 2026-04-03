@@ -9,20 +9,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow-x: hidden; /* prevents horizontal scrolling */
+  overflow-x: hidden;
+  /* prevents horizontal scrolling */
   background-color: #d2e8c9;
-}
-
-main {
-    margin-top: 100px; /* Default spacing for all pages */
-}
-
-/* Remove margin when a hero section is present */
-.hero-section + main {
-    margin-top: 0;
 }
