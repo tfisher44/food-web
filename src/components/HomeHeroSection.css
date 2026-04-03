@@ -25,8 +25,14 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100vw;
-  height: 100%;
-  object-fit: cover;
+  height: 56.25vw;
+  /* 16:9 ratio based on width */
+  min-height: 100vh;
+  min-width: 177.78vh;
+  /* 16:9 ratio based on height */
+  border: none;
+  pointer-events: none;
+  display: block;
   z-index: 0;
 }
 
