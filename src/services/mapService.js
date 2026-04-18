@@ -23,6 +23,7 @@ function createGraphic(site){
         contact: site.contact,
         description: site.description,
         produce: site.produce,
+        produce_sold_at: site.produce_sold_at,
         last_updated: date.toLocaleDateString()    
     }
 
@@ -46,6 +47,31 @@ async function populateLayer(siteType, icon, layerName) {
         // create an array of graphics using the array of site data from Supabase
         const graphics = data.map((site) => createGraphic(site));
 
+        // choose the content type
+        let popup_content = ""
+        if (siteType == "farm"){
+            popup_content = `
+                    <a href={website} target=_blank><b>Visit Website</b></a><br><br>
+                    <b>Description:</b> {description}<br><br>
+                    <b>Available Produce:</b><br> {produce}<br><br>
+                    <b>Produce Sold At:</b> {produce_sold_at}<br><br>
+                    <b>Address:</b> {address}<br><br>
+                    <b>Hours: </b>{hours}<br><br>
+                    <b>Contact:</b> {contact}<br><br>
+                    <b>Profile Last Updated: </b>{last_updated}
+                    `
+        } else {
+            popup_content = `
+                    <a href={website} target=_blank><b>Visit Website</b></a><br><br>
+                    <b>Description:</b> {description}<br><br>
+                    <b>Available Produce:</b><br> {produce}<br><br>
+                    <b>Address:</b> {address}<br><br>
+                    <b>Hours: </b>{hours}<br><br>
+                    <b>Contact:</b> {contact}<br><br>
+                    <b>Profile Last Updated: </b>{last_updated}
+                    `
+        }
+
         // create the feature layer
         return new FeatureLayer({
             title: layerName,
@@ -59,6 +85,7 @@ async function populateLayer(siteType, icon, layerName) {
                 {name: "contact", type: "string"},
                 {name: "description", type: "string"},
                 {name: "produce", type: "string"},
+                {name: "produce_sold_at", type: "string"},
                 {name: "last_updated", type: "string"}
             ],
             source: graphics,
@@ -73,15 +100,7 @@ async function populateLayer(siteType, icon, layerName) {
             },
             popupTemplate: {
                 title: "{Name}",
-                content: `
-                    <a href={website} target=_blank><b>Visit Website</b></a><br><br>
-                    <b>Description:</b> {description}<br><br>
-                    <b>Available Produce:</b><br> {produce}<br><br>
-                    <b>Address:</b> {address}<br><br>
-                    <b>Hours: </b>{hours}<br><br>
-                    <b>Contact:</b> {contact}<br><br>
-                    <b>Profile Last Updated: </b>{last_updated}
-                    `
+                content: popup_content
             }
         })
         

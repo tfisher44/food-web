@@ -13,13 +13,13 @@ export async function getSiteData(siteID) {
 }
 
 // update site data associated with the siteID
-export async function updateSiteData(siteID, name, contact, address, website, description, hours) {
+export async function updateSiteData(siteID, name, contact, address, website, description, hours, produceSoldAt) {
     // update the last_updated date to the current date
     const current_date = new Date().toISOString();
 
     // update site info in the database
     const {error} = await supabase.from("all_sites").update(
-        {name: name, address: address, website: website, contact: contact, hours: hours, description: description, last_updated: current_date}
+        {name: name, address: address, website: website, contact: contact, hours: hours, description: description, last_updated: current_date, produce_sold_at: produceSoldAt}
     ).eq("id", siteID);
 
     if (error) {
