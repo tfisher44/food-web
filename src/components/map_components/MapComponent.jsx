@@ -23,6 +23,7 @@ function MapComponent(){
 
     const [mapView, setMapView] = useState(null);
     const [layers, setLayers] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     // store the map view once available
     const handleViewReady = (event) => {
@@ -33,13 +34,26 @@ function MapComponent(){
     // populate the layers, add them to the map, and store them in state when mapView is ready
     useEffect(() => {
         async function loadMap() {
-            const layers = await populateAllLayers();
-            setLayers(layers);
+            if (!mapView) return;
 
-            if (mapView && layers) {
-                addLayersToMap(mapView, layers);
+            // set IsLoading to true until all layers have loaded
+            setIsLoading(true);
+
+            try {
+                const layers = await populateAllLayers();
+                setLayers(layers);
+
+                if (layers) {
+                    addLayersToMap(mapView, layers);
+                }
+            } catch (error) {
+                console.error("Error loading map", error);
+            } finally {
+                // set is loading to false once all layers have been added to the map
+                setIsLoading(false);
             }
         }
+
         loadMap();
     }, [mapView]);
 
@@ -85,6 +99,12 @@ function MapComponent(){
 
     return (
         <div style={{ height: "100%", width: "100%" }}>
+            {isLoading && (
+                <div className="map-loading-overlay">
+                    <p>Loading map data...</p>
+                </div>
+            )}
+
             <arcgis-map
                 basemap="streets-navigation-vector"
                 zoom="6"

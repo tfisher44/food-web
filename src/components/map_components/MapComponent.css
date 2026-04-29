@@ -31,3 +31,13 @@
 #remove-site-btn {
     background-color: rgba(226, 158, 156, 0.9);
 }
+
+.map-loading-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(2px);
+}
