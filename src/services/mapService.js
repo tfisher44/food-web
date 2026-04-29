@@ -176,11 +176,11 @@ export function addLayersToMap(mapView, layers) {
 }
 
 // function to filter the gardensLayer and farmsLayer by produce
-export function searchByProduce(searchTerm, layers) {
+export async function searchByProduce(searchTerm, layers) {
     const produce = searchTerm.toLowerCase();
 
     if (produce.trim() !== "") {
-        
+       
         layers.gardensLayer.definitionExpression = `produce LIKE '%${produce}%'`;
         layers.farmsLayer.definitionExpression = `produce LIKE '%${produce}%'`;
 
@@ -189,10 +189,20 @@ export function searchByProduce(searchTerm, layers) {
         layers.foodBanksLayer.visible = false;
         layers.compostLayer.visible = false;
 
+        const [gardensCount, farmsCount] = await Promise.all([
+            layers.gardensLayer.queryFeatureCount(),
+            layers.farmsLayer.queryFeatureCount()
+        ]);
+
+        if (gardensCount == 0 && farmsCount == 0) {
+            alert(`No sites have ${produce} available at the moment.`);
+        }
+
     } else {
         alert("Produce search input is empty.");
     }
 }
+
 
 export async function clearProduceResults(layers) {
     // reset layer visibility
