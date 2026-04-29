@@ -177,12 +177,13 @@ export function addLayersToMap(mapView, layers) {
 
 // function to filter the gardensLayer and farmsLayer by produce
 export async function searchByProduce(searchTerm, layers) {
-    const produce = searchTerm.toLowerCase();
+    const produce = searchTerm.trim();
 
-    if (produce.trim() !== "") {
-       
-        layers.gardensLayer.definitionExpression = `produce LIKE '%${produce}%'`;
-        layers.farmsLayer.definitionExpression = `produce LIKE '%${produce}%'`;
+    if (produce !== "") {
+        const produceFilter = `UPPER(produce) LIKE '%${produce.toUpperCase()}%'`;
+
+        layers.gardensLayer.definitionExpression = produceFilter;
+        layers.farmsLayer.definitionExpression = produceFilter;
 
         // hide the other layers
         layers.farmersMarketsLayer.visible = false;
