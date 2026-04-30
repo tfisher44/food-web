@@ -61,3 +61,14 @@ export async function updateProduceData(siteID, produce) {
         throw new Error(error.message);
     }
 }
+
+export async function invite_site_manager(email, siteId){
+    const {data, error} = await supabase.functions.invoke("invite-user", {
+        body: {email, siteId}
+    })
+
+    if (error) {
+        throw new Error(error.message || "Failed to invite site manager");
+    }
+    return data;
+}

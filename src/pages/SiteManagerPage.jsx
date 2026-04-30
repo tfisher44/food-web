@@ -43,7 +43,7 @@ export default function SiteManagerPage() {
             <h2>Role: Site Manager</h2>
             <h2>My Site: {siteName}</h2>
 
-            <button className="SM-btn" id="produce-editor-btn" type="button" onClick={() => setShowProduceEditor(true)}>Update Produce / Food / Products</button> 
+            <button className="SM-btn" id="produce-editor-btn" type="button" onClick={() => setShowProduceEditor(true)}>Update Available Produce</button> 
             {showProduceEditor && <ProduceEditor onClose={() => setShowProduceEditor(false)} siteID={siteID}/>}
 
             <button className="SM-btn" id="profile-editor-btn" type="button" onClick={() => setShowSiteProfileEditor(true)}>Edit Site Profile Information</button>
