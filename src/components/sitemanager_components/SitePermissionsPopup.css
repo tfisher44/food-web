@@ -1,0 +1,99 @@
+.permissions-popup-overlay {
+    position: fixed;
+    background: #b0d5da;
+    top: 15%;
+    left: 25%;
+    height: 70vh;
+    width: 50%;
+    display: flex;
+    align-items: flex-start;
+    z-index: 1000;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.permissions-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 2px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.permissions-popup-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    position: relative;
+    gap: 0.8rem;
+}
+
+.permissions-popup-content h2 {
+    margin: 0;
+}
+
+.invite-SM-popup{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    position: relative;
+    min-height: 18rem;
+    width: min(80vh, 100%);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.invite-SM-popup h3{
+    margin: 0;
+}
+
+#email_input{
+    width: min(22rem, 100%);
+    padding: 0.7rem 0.9rem;
+    box-sizing: border-box;
+}
+
+.invite-SM-popup button{
+    width: fit-content;
+    align-self: center;
+}
+
+#invite-popup-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 2px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.invite-SM-button{
+    height: 35px;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin: 15px auto;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0 1rem;
+    cursor: pointer;
+    background-color: #e9ebec;
+}
