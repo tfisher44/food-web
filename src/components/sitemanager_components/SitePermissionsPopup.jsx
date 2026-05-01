@@ -20,13 +20,13 @@ export default function SitePermissionsPopup({onClose, siteID}) {
     }
 
     return (
-        <div className="popup-overlay">
-            <div className="popup-content">
-                <span className="close-btn" onClick={onClose}>x</span>
+            <div className="permissions-popup-overlay">
+            <span className="permissions-close-btn" onClick={onClose}>x</span>
+                <div className="permissions-popup-content">
                 <h2>Site Managers for Encounter Farm:</h2>
 
                 {showInviteButton &&
-                    <button id="grant-permissions-btn" type="button" onClick={() => {setShowInviteEmail(true); setShowInviteEmailButton(false)}}>Invite a user to manage your site</button>
+                    <button className="invite-SM-button" type="button" onClick={() => {setShowInviteEmail(true); setShowInviteEmailButton(false)}}>Invite a user to manage your site</button>
                 }
 
                 {showInviteEmail &&
@@ -34,7 +34,7 @@ export default function SitePermissionsPopup({onClose, siteID}) {
                         <span id="invite-popup-close" onClick={() => {setShowInviteEmail(false); setShowInviteEmailButton(true)}}>x</span>
                         <h3>Enter recipient email:</h3>
                         <input id="email_input" onChange={(e) => setEmail(e.target.value)}></input>
-                        <button onClick={() => {invite_SM(email, siteID)}}>Send Invite</button>
+                        <button className="invite-SM-button" onClick={() => {invite_SM(email, siteID)}}>Send Invite</button>
                     </div>
                 }
             </div>
