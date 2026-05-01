@@ -62,13 +62,25 @@ export async function updateProduceData(siteID, produce) {
     }
 }
 
+// calls the supabase edge function invite-user for inviting a user to be a site manager for the current site manager's site
 export async function invite_site_manager(email, siteId){
     const {data, error} = await supabase.functions.invoke("invite-user", {
         body: {email, siteId}
     })
 
     if (error) {
-        throw new Error(error.message || "Failed to invite site manager");
+        let message = error.message || "Failed to invite site manager";
+
+    if (error.context) {
+        try {
+            const details = await error.context.json();
+            message = details?.error || message;
+        } catch {
+            message = error.context.statusText || message;
+        }
+    }
+
+        throw new Error(message);
     }
     return data;
 }

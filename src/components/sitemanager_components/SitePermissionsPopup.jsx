@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { invite_site_manager } from "../../services/siteManagementService"
 import "./SitePermissionsPopup.css"
 
@@ -12,10 +12,10 @@ export default function SitePermissionsPopup({onClose, siteID}) {
 
     async function invite_SM(email, siteID){
         try {
-            invite_site_manager(email, siteID);
+            await invite_site_manager(email, siteID);
             alert("Invite sent!");
         } catch (error) {
-            alert("Invite failed");
+            alert(`Invite failed: ${error.message}`);
         }
     }
 

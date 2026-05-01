@@ -36,9 +36,38 @@ type InviteRequestBody = {
   siteId?: number
 }
 
+// check whether or not the user is a site manager to the site id already
+// if they're not, insert the user + side id into site_managers table
+async function ensureSiteManagerAccess(userId: string, siteId: number, name: string) {
+  const { data: existing, error: checkError } = await supabase
+    .from("site_managers")
+    .select("user_id")
+    .eq("user_id", userId)
+    .eq("site_id", siteId)
+    .maybeSingle()
+
+  if (checkError) {
+    throw new Error(checkError.message)
+  }
+
+  if (existing) {
+    return
+  }
+
+  const { error: insertError } = await supabase.from("site_managers").insert({
+    user_id: userId,
+    site_id: siteId,
+    name,
+  })
+
+  if (insertError) {
+    throw new Error(insertError.message)
+  }
+}
+
 // check if the user has an exisitng account or not
 async function findUserByEmail(email: string) {
-  const {data, error} = await supabase.from("user_profiles").select("user_id, name, email").eq("email", email.toLowerCase()).maybeSingle()
+  const {data, error} = await supabase.from("user_profiles").select("user_id, display_name, email").eq("email", email.toLowerCase()).maybeSingle()
 
   if (error){
     throw new Error("Error searching user_profiles" + error.message)
@@ -103,15 +132,7 @@ Deno.serve(async (req) => {
 
     // add site management permissions if the user already exists
     if(existingUser) {
-      const { error: insertExistingError } = await supabase.from("site_managers").insert({
-        user_id: existingUser.user_id,
-        site_id: siteId,
-        name: existingUser.name
-      })
-
-      if (insertExistingError) {
-        return jsonResponse({ error: insertExistingError.message }, 500)
-      }
+      await ensureSiteManagerAccess(existingUser.user_id, siteId, existingUser.display_name)
     } else {
       // if the user doesn't exist yet, invite them
       const { data: inviteData, error: inviteError } = await supabase.auth.admin.inviteUserByEmail(email)
@@ -125,15 +146,7 @@ Deno.serve(async (req) => {
       }
 
       // add the new user to the site managers table with their site id
-      const { error: insertInvitedError } = await supabase.from("site_managers").insert({
-        user_id: inviteData.user.id,
-        site_id: siteId,
-        name: "temp"
-      })
-
-      if (insertInvitedError) {
-        return jsonResponse({ error: insertInvitedError.message }, 500)
-      }
+      await ensureSiteManagerAccess(inviteData.user.id, siteId, "temp")
     }
 
     // return success response
