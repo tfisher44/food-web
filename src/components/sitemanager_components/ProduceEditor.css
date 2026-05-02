@@ -18,15 +18,15 @@
 }
 
 #produce-update-btn {
-    background-color: #e3e996;
-    height: 40px;
+    height: 35px;
     border-radius: 8px;
-    border: none;
     font-size: 1rem;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    width: 50%;
+    margin: 15px auto;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0 1rem;
     cursor: pointer;
+    background-color: #e3e996;
 }
 
 .close-btn {

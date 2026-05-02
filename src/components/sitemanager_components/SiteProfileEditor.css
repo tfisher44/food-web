@@ -62,15 +62,15 @@
 }
 
 #update-btn {
-    background-color: #e3e996;
-    height: 40px;
+    height: 35px;
     border-radius: 8px;
-    border: none;
     font-size: 1rem;
-    margin-bottom: 10px;
-    width: 70%;
+    margin: 15px auto;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0 1rem;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #e3e996;
 }
 
 #descriptionInput {
