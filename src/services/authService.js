@@ -83,7 +83,7 @@ export async function updateDisplayName(name) {
         data: {display_name: name}
     });
     if(updateAuthNameError){
-        throw new Error(error.message);
+        throw new Error(updateAuthNameError.message);
     }
 
     // Get current user id from session/auth context
@@ -93,8 +93,8 @@ export async function updateDisplayName(name) {
     }
 
     // update display name in user profiles table
-    const {error: updateProfileNameError} = await supabase.from("site_profiles").update({display_name: name}).eq("user_id", userData.user.id);
+    const {error: updateProfileNameError} = await supabase.from("user_profiles").update({display_name: name}).eq("user_id", userData.user.id);
     if(updateProfileNameError){
-        throw new Error(error.message);
+        throw new Error(updateProfileNameError.message);
     }
 }
