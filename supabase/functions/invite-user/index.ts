@@ -135,7 +135,9 @@ Deno.serve(async (req) => {
       await ensureSiteManagerAccess(existingUser.user_id, siteId, existingUser.display_name)
     } else {
       // if the user doesn't exist yet, invite them
-      const { data: inviteData, error: inviteError } = await supabase.auth.admin.inviteUserByEmail(email)
+      const { data: inviteData, error: inviteError } = await supabase.auth.admin.inviteUserByEmail(email, { 
+        redirectTo: "https://foodweb.community/complete-user-profile"
+      })
 
       if(inviteError) {
         return jsonResponse({ error: inviteError.message }, 500)

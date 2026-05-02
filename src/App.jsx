@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import {AuthProvider} from "./contexts/AuthContext"
+import { AuthProvider } from "./contexts/AuthContext"
 import AppLayout from "./components/AppLayout"
 import HomePage from "./pages/HomePage"
 import AboutPage from "./pages/AboutPage"
@@ -14,8 +14,9 @@ import ResetEmailPassword from "./pages/ResetEmailPassword"
 import UpdatePassword from "./pages/UpdatePassword"
 import ProtectedRoute from "./components/auth_components/ProtectedRoute"
 import SMProtectedRoute from "./components/auth_components/SMProtectedRoute"
+import CompleteUserProfile from "./pages/CompleteUserProfile"
 
-function App() {
+export default function App() {
   return (
     <AuthProvider>
       <AppLayout >
@@ -33,10 +34,9 @@ function App() {
           <Route path="/change-password" element={<UpdatePassword />} />
           <Route path="/community-member-page" element={<ProtectedRoute ><CommunityMemberPage /></ProtectedRoute>} />
           <Route path="/site-manager-page" element={<ProtectedRoute ><SMProtectedRoute ><SiteManagerPage /></SMProtectedRoute></ProtectedRoute>} />
+          <Route path="/complete-user-profile" element={<CompleteUserProfile />} />
         </Routes>
       </AppLayout>
     </AuthProvider>
   )
 }
-
-export default App

@@ -75,3 +75,26 @@ export async function signOut() {
         throw new Error(error.message);
     }
 }
+
+// used in Complete User Profile page to update display name after site manager invite
+export async function updateDisplayName(name) {
+    // update display name in auth table
+    const {error: updateAuthNameError} = await supabase.auth.updateUser({
+        data: {display_name: name}
+    });
+    if(updateAuthNameError){
+        throw new Error(error.message);
+    }
+
+    // Get current user id from session/auth context
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+    if (userError || !userData?.user) {
+        throw new Error(userError?.message || "Unable to get current user");
+    }
+
+    // update display name in user profiles table
+    const {error: updateProfileNameError} = await supabase.from("site_profiles").update({display_name: name}).eq("user_id", userData.user.id);
+    if(updateProfileNameError){
+        throw new Error(error.message);
+    }
+}
