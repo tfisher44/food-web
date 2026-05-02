@@ -19,7 +19,7 @@ export default function CompleteUserProfile(){
             alert("Profile completed!");
             navigate("/login");
         } catch(error) {
-            alert("Error updating profile: ");
+            alert(`Error updating profile: ${error.message}`);
             console.log("Error updating profile: ", error);
         }
     }
