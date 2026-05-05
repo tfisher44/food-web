@@ -84,3 +84,17 @@ export async function invite_site_manager(email, siteId){
     }
     return data;
 }
+
+export async function get_site_managers_by_siteId(){
+    // query all user profiles
+    // rls policy in Supabase authomatically filters by users with the same site id
+    const { data, error } = await supabase
+    .from("user_profiles")
+    .select("display_name, email");
+
+    if(error){
+        throw new Error(error.message);
+    }
+
+    return data ?? [];
+}

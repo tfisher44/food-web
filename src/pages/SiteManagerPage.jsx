@@ -50,7 +50,7 @@ export default function SiteManagerPage() {
             {showSiteProfileEditor && <SiteProfileEditor onClose={() => setShowSiteProfileEditor(false)} siteID={siteID}/>}
 
             <button className="SM-btn" id="permissions-btn" type="button" onClick={() => setShowitePermissionsPopup(true)}>Manage Site Permissions</button>
-            {showSitePermissionsPopup && <SitePermissionsPopup onClose={() => setShowitePermissionsPopup(false)} siteID={siteID}/>}
+            {showSitePermissionsPopup && <SitePermissionsPopup onClose={() => setShowitePermissionsPopup(false)} siteID={siteID} siteName={siteName}/>}
         </div>
     )
 }
