@@ -1,6 +1,6 @@
 .popup-overlay {
     position: fixed;
-    background: #b0d5da;
+    background: #6ed3e0;
     top: 15%;
     left: 25%;
     height: 70vh;
@@ -70,7 +70,7 @@
     max-width: 100%;
     padding: 0 1rem;
     cursor: pointer;
-    background-color: #e3e996;
+    background-color: #e8ee92;
 }
 
 #descriptionInput {

@@ -35,11 +35,11 @@ export default function SitePermissionsPopup({onClose, siteID, siteName}) {
     }
 
     return (
-            <div className="permissions-popup-overlay">
+            <div className="popup-overlay">
             <span className="permissions-close-btn" onClick={onClose}>x</span>
 
                 <div className="permissions-popup-content">
-                <h2>Site Managers for Encounter Farm:</h2>
+                <h2>Site Managers for {siteName}:</h2>
 
                 {siteManagers.map((manager) => (
                     <div key={manager.user_id}>
